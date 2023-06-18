@@ -1,16 +1,20 @@
 <template>
   <div id="app">
+
     <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
+      <router-link :to="{ name: 'main' }">Vue Recipes</router-link> |
+      <router-link :to="{ name: 'search' }">Search</router-link> |
       {{ !$root.store.username }}
       <span v-if="!$root.store.username">
         Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
+        <router-link :to="{ name: 'register' }">Register</router-link> |
+        <router-link :to="{ name: 'login' }">Login</router-link> |
       </span>
       <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        <router-link :to="{ name: 'main' }">My Recipes</router-link> |
+        <router-link :to="{ name: 'main' }">Family Recipes</router-link> |
+        {{ $root.store.username }}: <button @click="Logout">Logout</button> |
+        
       </span>
     </div>
     <router-view />
@@ -40,7 +44,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #a50998;
   min-height: 100vh;
 }
 
@@ -50,7 +54,7 @@ export default {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffecaa;
 }
 
 #nav a.router-link-exact-active {
