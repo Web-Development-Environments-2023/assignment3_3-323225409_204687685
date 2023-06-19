@@ -1,12 +1,16 @@
+
 <template>
   <div class="container">
+    <br/>
     <h1 class="title">Register</h1>
+    <br/>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <b-form-group
         id="input-group-username"
         label-cols-sm="3"
         label="Username:"
         label-for="username"
+        class="field"
       >
         <b-form-input
           id="username"
@@ -21,15 +25,82 @@
           Username length should be between 3-8 characters long
         </b-form-invalid-feedback>
         <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
+          Username cannot contain numbers
         </b-form-invalid-feedback>
       </b-form-group>
+    
+      <b-form-group
+        id="input-group-firstName"
+        label-cols-sm="3"
+        label="First Name:"
+        label-for="firstName"
+        class="field"
+              
+      >
+      <b-form-input
+          id="firstName"
+          v-model="$v.form.firstName.$model"
+          type="text"
+          :state="validateState('firstName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.required">
+          FirstName is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.firstName.alpha">
+          A name cannot contain numbers
+        </b-form-invalid-feedback>
+      </b-form-group>   
 
+      
+      <b-form-group
+        id="input-group-lastName"
+        label-cols-sm="3"
+        label="Last Name:"
+        label-for="lastName"
+        class="field"
+
+      >
+        <b-form-input
+          id="lastName"
+          v-model="$v.form.lastName.$model"
+          type="text"
+          :state="validateState('lastName')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.required">
+          LastName is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-if="!$v.form.lastName.alpha">
+          LastName cannot contain numbers
+        </b-form-invalid-feedback>
+      </b-form-group>  
+
+      <b-form-group
+        id="input-group-email"
+        label-cols-sm="3"
+        label="Email:"
+        label-for="email"
+        class="field"
+
+      >
+        <b-form-input
+          id="email"
+          v-model="$v.form.email.$model"
+          type="email"
+          :state="validateState('email')"
+        ></b-form-input>
+        <b-form-invalid-feedback v-if="!$v.form.email.required">
+          Email is required
+        </b-form-invalid-feedback>
+        <b-form-invalid-feedback v-else-if="!$v.form.email.validEmail">
+          The Email is not valid!
+        </b-form-invalid-feedback>
+      </b-form-group> 
       <b-form-group
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
         label-for="country"
+        class="field"
       >
         <b-form-select
           id="country"
@@ -41,12 +112,16 @@
           Country is required
         </b-form-invalid-feedback>
       </b-form-group>
+    
+
+           
 
       <b-form-group
         id="input-group-Password"
         label-cols-sm="3"
         label="Password:"
         label-for="password"
+        class="field"
       >
         <b-form-input
           id="password"
@@ -58,46 +133,42 @@
           Password is required
         </b-form-invalid-feedback>
         <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
-          Your password should be <strong>strong</strong>. <br />
-          For that, your password should be also:
+          <!-- Your password should be <strong>strong</strong> -->
         </b-form-text>
         <b-form-invalid-feedback
-          v-if="$v.form.password.required && !$v.form.password.length"
+        v-if="$v.form.password.required || !$v.form.password.length || !$v.form.password.specialChar || !$v.form.password.digit"
         >
-          Have length between 5-10 characters long
+        The password should contain 5 to 10 characters and at least one special character and one number
         </b-form-invalid-feedback>
       </b-form-group>
+
 
       <b-form-group
-        id="input-group-confirmedPassword"
+        id="input-group-confirmPassword"
         label-cols-sm="3"
         label="Confirm Password:"
-        label-for="confirmedPassword"
+        label-for="confirmPassword"
+        class="field"
       >
         <b-form-input
-          id="confirmedPassword"
+          id="confirmPassword"
           type="password"
-          v-model="$v.form.confirmedPassword.$model"
-          :state="validateState('confirmedPassword')"
+          v-model="$v.form.confirmPassword.$model"
+          :state="validateState('confirmPassword')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
-          Password confirmation is required
+        <b-form-invalid-feedback v-if="!$v.form.confirmPassword.required">
+          Confirmation is required
         </b-form-invalid-feedback>
         <b-form-invalid-feedback
-          v-else-if="!$v.form.confirmedPassword.sameAsPassword"
+          v-else-if="!$v.form.confirmPassword.sameAsPassword"
         >
-          The confirmed password is not equal to the original password
+        The two passwords do not match
         </b-form-invalid-feedback>
       </b-form-group>
+      <b-button  type="submit" class="btnReg" variant="primary" >Register</b-button>
 
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button
-        type="submit"
-        variant="primary"
-        style="width:250px;"
-        class="ml-5 w-75"
-        >Register</b-button
-      >
+      <b-button  class = "btnReset" type="reset" variant="danger">Reset</b-button>
+      
       <div class="mt-2">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
@@ -112,11 +183,8 @@
     >
       Register failed: {{ form.submitError }}
     </b-alert>
-    <!-- <b-card class="mt-3 md-3" header="Form Data Result">
-      <pre class="m-0"><strong>form:</strong> {{ form }}</pre>
-      <pre class="m-0"><strong>$v.form:</strong> {{ $v.form }}</pre>
-    </b-card> -->
   </div>
+
 </template>
 
 <script>
@@ -140,7 +208,7 @@ export default {
         lastName: "",
         country: null,
         password: "",
-        confirmedPassword: "",
+        confirmPassword: "",
         email: "",
         submitError: undefined
       },
@@ -159,20 +227,36 @@ export default {
       country: {
         required
       },
+      firstName: {
+        required,
+        alpha
+      },
+      lastName:{
+        required,
+        alpha
+      },
+      email:{
+        required,
+        email,
+      },
       password: {
         required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
+        length: (p) => p.length >= 5 && p.length <= 10,
+        specialChar: (p) => /[^\w\s]/.test(p),
+        digit: (p) => /\d/.test(p),
+        
+
       },
-      confirmedPassword: {
+      confirmPassword: {
         required,
         sameAsPassword: sameAs("password")
       }
     }
   },
   mounted() {
-    // console.log("mounted");
+
     this.countries.push(...countries);
-    // console.log($v);
+
   },
   methods: {
     validateState(param) {
@@ -181,29 +265,32 @@ export default {
     },
     async Register() {
       try {
+        
         const response = await this.axios.post(
-          // "https://test-for-3-2.herokuapp.com/user/Register",
           this.$root.store.server_domain + "/Register",
-
           {
+            
             username: this.form.username,
-            password: this.form.password
+            firstname: this.form.firstName,
+            lastname: this.form.lastName,
+            country: this.form.country,
+            password: this.form.password,
+            confirmation_password: this.form.confirmation_password,
+            email: this.form.email,
           }
         );
-        this.$router.push("/login");
-        // console.log(response);
+   
+        this.$router.push("/Login");
       } catch (err) {
-        console.log(err.response);
         this.form.submitError = err.response.data.message;
       }
     },
     onRegister() {
-      // console.log("register method called");
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("register method go");
+
       this.Register();
     },
     onReset() {
@@ -213,7 +300,7 @@ export default {
         lastName: "",
         country: null,
         password: "",
-        confirmedPassword: "",
+        confirmPassword: "",
         email: ""
       };
       this.$nextTick(() => {
@@ -223,8 +310,118 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .container {
-  max-width: 500px;
+  max-width: 550px;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #F8F8F8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 36px;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.btnReg {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #FF9800;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.btnReg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: skewX(-30deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.btnReg:hover:before {
+  transform: skewX(0);
+  left: 100%;
+}
+
+.btnReg:hover {
+  background-color: #FFD54F;
+}
+
+.btnReset {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 50px;
+}
+
+.btnReset:hover {
+  background-color: #3367D6;
+}
+
+.field {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #666666;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.b-form-group {
+  margin-bottom: 30px;
+}
+
+.b-form-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.b-form-input:focus {
+  outline: none;
+  border-color: #4285F4;
+}
+
+.b-form-invalid-feedback {
+  color: #b8069d;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.b-alert {
+  margin-top: 20px;
+  background-color: #b8069d;
+  color: #FFFFFF;
+  padding: 10px;
+  border-radius: 4px;
 }
 </style>

@@ -1,12 +1,16 @@
 <template>
   <div class="container">
+    <br/>
     <h1 class="title">Login</h1>
+    <br/>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
+        class="field"
+
       >
         <b-form-input
           id="Username"
@@ -24,6 +28,7 @@
         label-cols-sm="3"
         label="Password:"
         label-for="Password"
+        class="field"
       >
         <b-form-input
           id="Password"
@@ -39,8 +44,7 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
-        class="mx-auto w-100"
+        class="btnReg"
         >Login</b-button
       >
       <div class="mt-2">
@@ -132,5 +136,58 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 400px;
+}
+.title {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 36px;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+.field {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #666666;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btnReg {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #FF9800;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.btnReg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: skewX(-30deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.btnReg:hover:before {
+  transform: skewX(0);
+  left: 100%;
+}
+
+.btnReg:hover {
+  background-color: #FFD54F;
 }
 </style>
