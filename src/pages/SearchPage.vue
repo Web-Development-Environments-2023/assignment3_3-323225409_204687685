@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="title">Search Recipes</h1>
 
-    <b-form @submit.prevent="onSearch" @reset.prevent="onReset">
+    <b-form class="formsDesign" @submit.prevent="onSearch" @reset.prevent="onReset">
       
       <b-form-group
         id="input-group-query"
@@ -15,6 +15,7 @@
           id="query"
           v-model="form.query"
           type="text"
+          class="search-field"
         ></b-form-input>
       </b-form-group>
 
@@ -29,6 +30,7 @@
           id="cuisine"
           v-model="form.cuisine"
           :options="cuisines"
+          class="search-field"
         ></b-form-select>
       </b-form-group>
 
@@ -59,35 +61,41 @@
           id="intolerances"
           v-model="form.intolerances"
           :options="intolerances"
+          class="search-field"
         ></b-form-select>
       </b-form-group>
 
+    
+
+
       <b-row class="sort-num">
-      <b-col >
-      <b-form-group label="number of results:" class="search-field" v-slot="{ ariaDescribedby }">
-        <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="5">5</b-form-radio>
-        <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="10">10</b-form-radio>
-        <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="15">15</b-form-radio>
-      </b-form-group>
-      </b-col>
-      <b-col>
-        <b-form-group label="sort results by:" class="search-field" v-slot="{ ariaDescribedby }">
-          <b-form-radio v-model="form.selected_sort" :aria-describedby="ariaDescribedby" name="some-radios2" value="popularity">popularity</b-form-radio>
-          <b-form-radio v-model="form.selected_sort" :aria-describedby="ariaDescribedby" name="some-radios2" value="time">time</b-form-radio>
-        </b-form-group>
-     </b-col>  
-      
+        <b-col >
+          <b-form-group label="Number Of Results:" class="search-field" v-slot="{ ariaDescribedby }">
+            <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="5">5</b-form-radio>
+            <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="10">10</b-form-radio>
+            <b-form-radio v-model="form.selected_num" :aria-describedby="ariaDescribedby" name="some-radios" value="15">15</b-form-radio>
+          </b-form-group>
+        </b-col>
+        <b-col>
+          <b-form-group label="Sort Results By:" class="search-field" v-slot="{ ariaDescribedby }">
+            <b-form-radio v-model="form.selected_sort" :aria-describedby="ariaDescribedby" name="some-radios2" value="popularity">popularity</b-form-radio>
+            <b-form-radio v-model="form.selected_sort" :aria-describedby="ariaDescribedby" name="some-radios2" value="time">time</b-form-radio>
+          </b-form-group>
+        </b-col> 
       </b-row>
 
-
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button
+      
+      <b-button 
         type="submit"
         variant="primary"
         style="width:250px;"
-        class="ml-5 w-75"
+        class="searchButton"
         >Search !</b-button
       >
+      <b-button type="reset" variant="danger" class="resetButton">Reset</b-button>
+
+
+
     </b-form>
 
     <b-alert
@@ -107,111 +115,91 @@
 
 
 <script>
-import countries from "../assets/countries";
-import {
-  required,
-  minLength,
-  maxLength,
-  alpha,
-  sameAs,
-  email
-} from "vuelidate/lib/validators";
+import cuisines from "../assets/cuisines";
+import diet from "../assets/diet";
+import intolerances from "../assets/intolerances";
+import RecipePreviewList from "../components/RecipePreviewList";
+
 
 export default {
-  name: "Register",
+  name: "Search",
+    components: {
+      RecipePreviewList,
+      // 'b-form-radio': BFormRadio
+  },
   data() {
     return {
       form: {
-        username: "",
-        firstName: "",
-        lastName: "",
-        country: null,
-        password: "",
-        confirmedPassword: "",
-        email: "",
-        submitError: undefined
+        query: "",
+        cuisine: "",
+        selected_sort: "", 
+        selected_num :"",
+        diet: "",
+        intolerance:"",
+        submitError: undefined,
       },
-      countries: [{ value: null, text: "", disabled: true }],
+      cuisines: [{ value: null, text: "", disabled: true }],
+      diet: [{ value: null, text: "", disabled: true }],
+      intolerances: [{ value: null, text: "", disabled: true }],
+      searchClicked: false,
       errors: [],
-      validated: false
+      search_url_:"",
     };
   },
-  validations: {
-    form: {
-      username: {
-        required,
-        length: (u) => minLength(3)(u) && maxLength(8)(u),
-        alpha
-      },
-      country: {
-        required
-      },
-      password: {
-        required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p)
-      },
-      confirmedPassword: {
-        required,
-        sameAsPassword: sameAs("password")
-      }
-    }
-  },
+  
   mounted() {
-    // console.log("mounted");
-    this.countries.push(...countries);
-    // console.log($v);
+    this.cuisines.push(...cuisines);
+    this.diet.push(...diet);
+    this.intolerances.push(...intolerances);
+    this.check_local_storage();
   },
   methods: {
-    validateState(param) {
-      const { $dirty, $error } = this.$v.form[param];
-      return $dirty ? !$error : null;
-    },
-    async Register() {
-      try {
-        const response = await this.axios.post(
-          // "https://test-for-3-2.herokuapp.com/user/Register",
-          this.$root.store.server_domain + "/Register",
 
-          {
-            username: this.form.username,
-            password: this.form.password
-          }
-        );
-        this.$router.push("/login");
-        // console.log(response);
-      } catch (err) {
-        console.log(err.response);
-        this.form.submitError = err.response.data.message;
-      }
-    },
-    onRegister() {
-      // console.log("register method called");
-      this.$v.form.$touch();
-      if (this.$v.form.$anyError) {
-        return;
-      }
-      // console.log("register method go");
-      this.Register();
-    },
-    onReset() {
-      this.form = {
-        username: "",
-        firstName: "",
-        lastName: "",
-        country: null,
-        password: "",
-        confirmedPassword: "",
-        email: ""
-      };
-      this.$nextTick(() => {
-        this.$v.$reset();
-      });
-    }
+    
   }
 };
 </script>
+
+
+
 <style lang="scss" scoped>
-.container {
-  max-width: 500px;
+
+
+  .container {
+    max-width: 700px;
+    background-color: rgb(248, 239, 230);
+    border-radius: 30px;
+    padding: 4vh 2vw 2vw 3vh;
+  }
+
+  .sort-num{
+    max-width: 900px;
+    border-radius: 45px;
+  }
+
+  .search-field{
+    border-radius: 20px;
+  }
+
+  .searchButton {
+  border-radius: 5px;
+  padding: 1.5vh 1vw;
+  background-color: #F19CBB;
+  border-color: #F19CBB;
+  font-weight: bold;
+  color: #080807;
+  margin: 2vh 3vw 0.5vw 3vh;
 }
+
+.resetButton{
+  border-radius: 5px;
+  padding: 1.5vh 1vw;
+  background-color: #F19CBB;
+  border-color: #F19CBB;
+  font-weight: bold;
+  color: #080807;
+  margin: 2vh 3vw 0.5vw 3vh;
+
+}
+
 </style>
