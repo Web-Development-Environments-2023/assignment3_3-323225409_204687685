@@ -133,7 +133,7 @@ export default {
         query: "",
         cuisine: "",
         selected_sort: "", 
-        selected_num :"",
+        selected_num :"5",
         diet: "",
         intolerance:"",
         submitError: undefined,
@@ -151,7 +151,7 @@ export default {
     this.cuisines.push(...cuisines);
     this.diet.push(...diet);
     this.intolerances.push(...intolerances);
-    this.check_local_storage();
+    // this.check_local_storage();
   },
   methods: {
 

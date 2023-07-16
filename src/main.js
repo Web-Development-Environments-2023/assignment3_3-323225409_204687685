@@ -13,6 +13,9 @@ const router = new VueRouter({
 import Vuelidate from "vuelidate";
 // import Vue from 'vue';
 // import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { BFormRadio } from 'bootstrap-vue';
+Vue.component('b-form-radio', BFormRadio);
+
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
