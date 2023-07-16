@@ -5,7 +5,7 @@
     <br/>
     <br/>
     <br/>
-    <img src="../images/404sad.png">
+    <img src="../assets/404sad.png">
     <br/>
     <br/>
     <p>Oops! The page you are looking for does not exist.</p>
