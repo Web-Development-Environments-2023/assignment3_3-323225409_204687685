@@ -13,7 +13,7 @@
         </b-navbar-nav>
         <!-- About -->
         <b-navbar-nav>
-          <router-link tag="b-nav-item" to="/About"><b style="color: white">About</b></router-link>
+          <router-link tag="b-nav-item" to="/AboutUs"><b style="color: white">About</b></router-link>
         </b-navbar-nav>
         <!-- Registred user  -->
         <b-navbar-nav v-if="$root.store.username">
