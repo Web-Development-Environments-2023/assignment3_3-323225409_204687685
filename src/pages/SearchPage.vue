@@ -1,16 +1,14 @@
-<template>
+<!-- <template>
   <div class="container">
     <h1 class="title">Search Recipes</h1>
 
     <b-form class="formsDesign" @submit.prevent="onSearch" @reset.prevent="onReset">
       
-      <!-- QUERY -->
       <b-form-group id="input-group-query" label-cols-sm="3" label="Recipe Name: " label-for="query" class="search-field">
         <b-form-input id="query" v-model="$v.form.query.$model" type="text" class="search-field" :state="validateState('query')"> </b-form-input>
         <b-form-invalid-feedback v-if="!$v.form.query.required">query is required</b-form-invalid-feedback>
       </b-form-group>
 
-      <!-- CUISINE -->
       <b-form-group
         id="input-group-cuisine"
         label-cols-sm="3"
@@ -26,7 +24,6 @@
         ></b-form-select>
       </b-form-group>
 
-      <!-- DIET -->
       <b-form-group
         id="input-group-diet"
         label-cols-sm="3"
@@ -42,7 +39,6 @@
         ></b-form-select>
       </b-form-group>
 
-      <!-- Intolerance -->
 
       <b-form-group
         id="input-group-intolerances"
@@ -61,7 +57,6 @@
 
     
 
-          <!-- Number of results -->
 
       <b-row class="sort-num">
         <b-col >
@@ -72,7 +67,6 @@
           </b-form-group>
         </b-col>
 
-        <!-- Sort results by -->
         <b-col>
           <b-form-group label="Sort Results By:" class="search-field" v-slot="{ ariaDescribedby }">
             <b-form-radio v-model="form.selected_sort" :aria-describedby="ariaDescribedby" name="some-radios2" value="popularity">popularity</b-form-radio>
@@ -81,7 +75,6 @@
         </b-col> 
       </b-row>
 
-      <!-- Buttons -->
       <b-button 
         type="submit"
         variant="primary"
@@ -204,4 +197,4 @@ export default {
 
 }
 
-</style>
+</style> -->
