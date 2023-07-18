@@ -6,6 +6,8 @@
     </h3>
     <b-row>
       <b-col v-for="r in recipes" :key="r.id">
+                  <RecipePreview class="recipePreview" :recipe="r" :title="title" :myRecipes="myRecipe" :route_name="route_name"/>
+
         <RecipePreview class="recipePreview" :recipe="r" />
       </b-col>
     </b-row>
@@ -41,7 +43,7 @@ export default {
           // "https://test-for-3-2.herokuapp.com/recipes/random"
         );
 
-        console.log(response);
+        // console.log(response);
         const recipes = response.data.recipes;
         this.recipes = [];
         this.recipes.push(...recipes);
