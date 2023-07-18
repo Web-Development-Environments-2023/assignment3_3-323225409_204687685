@@ -11,11 +11,15 @@ const router = new VueRouter({
 });
 
 import Vuelidate from "vuelidate";
-// import Vue from 'vue';
-// import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+
+
 import { BFormRadio } from 'bootstrap-vue';
 Vue.component('b-form-radio', BFormRadio);
+import { BootstrapVue, IconsPlugin, ModalPlugin } from 'bootstrap-vue';
 
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(ModalPlugin);
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -31,6 +35,11 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  FormRadioPlugin,
+  // ModalPlugin,
+  FormCheckboxPlugin,
+  FormTextareaPlugin,
+  ListGroupPlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -43,6 +52,12 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  FormRadioPlugin,
+  ModalPlugin,
+  FormCheckboxPlugin,
+  FormTextareaPlugin,
+  ListGroupPlugin,
+
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 
