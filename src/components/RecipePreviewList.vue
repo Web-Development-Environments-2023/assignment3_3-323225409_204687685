@@ -44,7 +44,7 @@ export default {
         );
 
         // console.log(response);
-        const recipes = response.data;
+        const recipes = response.data.recipes;
         this.recipes = [];
         this.recipes.push(...recipes);
         // console.log(this.recipes);
