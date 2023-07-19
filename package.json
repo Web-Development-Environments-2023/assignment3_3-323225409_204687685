@@ -36,11 +36,13 @@
 
     "vue-scroll-fixed-navbar": "^0.2.2",
 
-    "vuelidate": "^0.7.5"
+    "vuelidate": "^0.7.7"
 
   },
 
   "devDependencies": {
+
+    "@types/vuelidate": "^0.7.18",
 
     "@vue/cli-plugin-babel": "~4.4.0",
 

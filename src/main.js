@@ -91,6 +91,7 @@ Vue.config.productionTip = false;
 const shared_data = {
   server_domain: "http://localhost:3000",
   username: localStorage.username,
+  lastSearch: sessionStorage.lastSearch,
   // username: "Ayelet",
   login(username) {
     localStorage.setItem("username", username);
@@ -100,8 +101,14 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
+    localStorage.removeItem("lastSearch");
+
     this.username = undefined;
   },
+  setLastSearch(searchDetails){
+    this.lastSearch = searchDetails;
+    sessionStorage.setItem("lastSearch", this.lastSearch);
+  }
 };
 console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
