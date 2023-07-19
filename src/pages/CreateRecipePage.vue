@@ -284,7 +284,7 @@
 
   <style>
     .createtitle{
-      background-color: rgb(248, 239, 230);
+      background-color: rgb(27, 61, 174);
       border-radius: 20px;
       display: flex;
       flex-direction: column;
