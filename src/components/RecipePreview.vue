@@ -1,4 +1,3 @@
-
 <template>
   <div class="recipe-card">
     <div class="recipe-card-image">
@@ -15,7 +14,9 @@
         </div>
         <div class="recipe-detail">
           <img src="../assets/like.png" alt="Likes" class="detail-icon">
-          <span class="detail-text">{{ recipe.popularity }} Likes</span>
+          <!-- aggregate likes -->
+          <span class="detail-text">{{ recipe.aggregateLikes }} Likes</span>
+          
         </div>
         <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
           <img src="../assets/star.png" alt="Favorite" class="detail-icon">
@@ -82,12 +83,12 @@ export default {
     },
   },
   methods: {
-    async addToFavorites(recipeId) {
+    async addToFavorites(recipeId){
       try {
-        await this.axios.post(
-          `${this.$root.store.serverDomain}/users/favorites/`,
+        const response = await this.axios.post(
+          this.$root.store.server_domain + "/users/favorites",
           {
-            recipeId: recipeId,
+            recipe_id: recipeId
           }
         );
         this.updateFavorites();
@@ -133,17 +134,18 @@ export default {
 </script>
 
 
-<style scoped>
+<!-- <style scoped>
 .recipe-card{
   align-content: center;
   width: 100%;
   height: 100%;
   max-width: 500px;
   min-height: 500px;
-  align-items: center;
+ 
   margin: 20px 15px;
-  text-align: center;
+ 
   color: rgb(6, 6, 6); 
+  
   
 }
 
@@ -155,9 +157,11 @@ export default {
 .detail-icon {
   width: 40px;
   height: 40px;
+  
 }
 
 .info-icon {
+  
   width: 50px;
   height: 40px;
 }
@@ -219,4 +223,106 @@ export default {
   height: 40px;
 }
 
+</style> -->
+<style scoped>
+.recipe-card {
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  min-height: 500px;
+  margin: 20px 15px;
+  color: rgb(6, 6, 6);
+}
+
+.recipe-title {
+  font-weight: 700;
+  font-family: calibri;
+  color: rgb(14, 14, 14);
+}
+
+.detail-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.info-icon {
+  width: 50px;
+  height: 40px;
+}
+
+.personal-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.recipe-details,
+.recipe-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recipe-detail {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.recipe-info .info-item {
+  margin-right: 10px;
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.meta-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.recipe-tags {
+  display: flex;
+  justify-content: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.gluten-free {
+  background-color: #70ad47;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.vegan {
+  background-color: #7030a0;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.vegetarian {
+  background-color: #00b0f0;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+}
 </style>

@@ -117,7 +117,7 @@ methods: {
   async Create() {
     try {
       const response = await this.axios.post(
-      this.$root.store.server_domain + "/users/myRecipes",
+      this.$root.store.server_domain + "/users/CreateRecipe",
       {
         title: this.form.title,
         readyInMinutes: this.form.readyInMinutes ,
@@ -169,7 +169,7 @@ methods: {
       else{
         this.$root.toast("error", "there is no ingredients", "error");
       }
-      onResetCreate()
+      this.onResetCreate();
     },
     onResetCreate(){
       this.form={
@@ -235,12 +235,13 @@ methods: {
   }
 </script>
 
-<style>
-  .createtitle{
-    background-color: aqua;
-  }
+<style scoped>
+/deep/ .createtitle{
+  background-color: aqua;
+}
 
-  .createButtons{
-    background-color: blue;
-  }
+.createButtons{
+  background-color: blue;
+}
+
 </style>

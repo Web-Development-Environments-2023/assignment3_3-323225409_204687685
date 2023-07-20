@@ -25,9 +25,9 @@
         </b-navbar-nav>
           <!-- Personal dropdown: Favorites, My Recipes, My Family Recipes -->
           <b-nav-item-dropdown text="Personal" class="bold-option">
-            <router-link tag="b-dropdown-item" :to="{name:'favorites'}"><b style="color: white" >Favorites</b></router-link>     
-            <router-link tag="b-dropdown-item" :to="{name:'myrecipes'}"><b style="color: white">My Recipes</b></router-link>
-            <router-link tag="b-dropdown-item" :to="{name:'familyrecipes'}"><b style="color: white">My Family Recipes</b></router-link>
+            <router-link tag="b-dropdown-item" :to="{name:'FavoritePage'}"><b style="color: white" >Favorites</b></router-link>     
+            <router-link tag="b-dropdown-item" :to="{name:'MyRecipesPage'}"><b style="color: white">My Recipes</b></router-link>
+            <router-link tag="b-dropdown-item" :to="{name:'FamilyRecipes'}"><b style="color: white">My Family Recipes</b></router-link>
           </b-nav-item-dropdown>
         </b-navbar-nav>
         <!-- Hello guest dropdown: Register & Login -->
@@ -90,7 +90,7 @@
     top: 0;
     z-index: 10;
     font-family: cursive;
-    background-color: rgb(237, 207, 178)!important;
+    background-color: rgb(237, 211, 178)!important;
     height:50px ;
     color: white;
   }

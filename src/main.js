@@ -5,7 +5,9 @@ import axios from "axios";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
+import VueCookies from "vue-cookies";
 Vue.use(VueRouter);
+Vue.use(VueCookies);
 const router = new VueRouter({
   routes,
 });
@@ -60,7 +62,7 @@ import {
 
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
-
+axios.defaults.withCredentials=true;
 axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
@@ -89,21 +91,26 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
-  server_domain: "http://localhost:3000",
+  server_domain: "http://127.0.0.1:3000",
   username: localStorage.username,
   lastSearch: sessionStorage.lastSearch,
+  favorite_list: localStorage.favorite_list,
   // username: "Ayelet",
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
+    
     console.log("login", this.username);
   },
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
     localStorage.removeItem("lastSearch");
-
     this.username = undefined;
+  },
+  updateFavoriteList(favorite_list) {
+    localStorage.setItem("favorite_list", favorite_list);
+    this.favorite_list = favorite_list;
   },
   setLastSearch(searchDetails){
     this.lastSearch = searchDetails;

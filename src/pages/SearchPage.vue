@@ -361,7 +361,7 @@ export default {
           {
             params:{
             query: this.form.search,
-            number: this.form.number,
+            amount: this.form.number,
             cuisine: this.form.cuisine,
             diet: this.form.diet,
             intolerance: this.form.intolerance,

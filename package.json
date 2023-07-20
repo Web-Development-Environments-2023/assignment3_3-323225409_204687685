@@ -30,6 +30,8 @@
 
     "vue-axios": "^2.1.5",
 
+    "vue-cookies": "^1.8.3",
+
     "vue-loader": "^17.2.2",
 
     "vue-router": "^3.2.0",
