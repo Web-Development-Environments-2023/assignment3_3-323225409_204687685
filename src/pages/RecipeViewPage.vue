@@ -2,7 +2,7 @@
   <div class="recipe-container">
     <div class="recipe-details">
       <div class="recipe-header">
-        <h1 class="title">{{ recipe.title }}</h1>
+        <!-- <h1 class="title">{{ recipe.title }}</h1> -->
         <img :src="recipe.image" class="image" alt="Recipe Image" />
       </div>
       <div class="recipe-info">
@@ -43,7 +43,7 @@
         </div>
         <div v-if="!recipe.isFavorite && showAddToFavorites">
           <b-button @click="addToFavorites(recipe.id)" class="heart-button">
-            <img src="../assets/logo.png" class="icon" />
+
             Add to Favorites
           </b-button>
         </div>
@@ -70,7 +70,7 @@
   </div>
 </template>
 
-<script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -123,7 +123,7 @@ export default {
           this.$root.store.server_domain + path +id,
            
         );
-        // console.log("response.status", response.status);
+        
         if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
@@ -156,11 +156,13 @@ export default {
       } = _response;
       //if is Private Recipe
       if(this.myRecipe || this.familyRecipes){
-      const jsonIngredients = JSON.parse(ingredients)
-      const jsonInstraction = JSON.parse(instructions);
-      ingredients = jsonIngredients.map((item) => ({
-      name: item.name,
-      amount: parseFloat(item.amount) 
+        const jsonIngredients = JSON.parse(ingredients)
+        console.log(jsonIngredients)
+        console.log("hello")
+        const jsonInstraction = JSON.parse(instructions);
+        ingredients = jsonIngredients.map((item) => ({
+        name: item.name,
+        amount: parseFloat(item.amount) 
         }));
         instructions = jsonInstraction.map((item) => ({
         name: item.name,
@@ -170,7 +172,7 @@ export default {
         }))
      }));
     }
-    console.log(this.$route.params.route_name)
+    
 
     //rest of recipes
      let _instructions = instructions
@@ -200,6 +202,109 @@ export default {
       console.log(error);
     }
 }
+};
+</script> -->
+
+<script>
+export default {
+  data() {
+    return {
+      recipe: null,
+      myRecipe: false,
+      familyRecipes: false,
+      showAddToFavorites: true // Add this variable and set it to true to display the heart button
+    };
+  },
+  methods: {
+    async addToFavorites(recipeId) {
+      try {
+        const response = await this.axios.post(
+          this.$root.store.server_domain + "/users/favorites/",
+          {
+            recipeId: recipeId
+          }
+        );
+        this.recipe.isFavorite = true;
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
+  async created() {
+    try {
+      let response;
+      let path = "/recipes/";
+      let id = this.$route.params.recipeId;
+      if (this.$route.params.route_name === "/users/MyRecipes") {
+        path = "/users/MyRecipes/";
+        this.myRecipe = true;
+      }
+      if (this.$route.params.route_name === "/users/FamilyRecipes") {
+        path = "/users/FamilyRecipes/";
+        this.familyRecipes = true;
+      }
+      try {
+        response = await this.axios.get(
+          this.$root.store.server_domain + path + id
+        );
+        if (response.status !== 200) this.$router.replace("/NotFound");
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        this.$router.replace("/NotFound");
+        return;
+      }
+
+      let _response;
+      if (this.myRecipe || this.familyRecipes) {
+        _response = response.data[0];
+      } else {
+        _response = response.data;
+      }
+
+      let {
+        instructions,
+        ingredients,
+        popularity,
+        readyInMinutes,
+        servings,
+        image,
+        title,
+        vegan,
+        vegetarian,
+        glutenFree,
+        isWatched,
+        isFavorite,
+        creator,
+        customary
+      } = _response;
+
+      // Check if the JSON data is defined before parsing
+      ingredients = ingredients ? JSON.parse(ingredients) : [];
+      instructions = instructions ? JSON.parse(instructions) : [];
+
+      // Rest of the data processing remains unchanged
+
+      let _recipe = {
+        _instructions: instructions,
+        ingredients: ingredients,
+        popularity,
+        readyInMinutes,
+        servings,
+        image,
+        title,
+        vegan,
+        vegetarian,
+        glutenFree,
+        isWatched,
+        isFavorite,
+        creator,
+        customary
+      };
+      this.recipe = _recipe;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 };
 </script>
 
@@ -279,7 +384,7 @@ export default {
 
 .heart-button {
   cursor: pointer;
-  background-color: #ff5a5f;
+  background-color: #f7d3d4;
   border: none;
   border-radius: 8px;
   padding: 12px 20px;
@@ -290,7 +395,7 @@ export default {
 }
 
 .heart-button:hover {
-  background-color: #e74b4f;
+  background-color: #eec8c9;
 }
 
 /* Additional styling for a professional look */
@@ -360,7 +465,7 @@ export default {
 }
 
 .heart-button {
-  background-color: #ff5a5f;
+  background-color: #fdbcbe;
 }
 
 .heart-button:hover {
