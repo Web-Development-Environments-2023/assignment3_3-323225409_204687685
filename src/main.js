@@ -112,6 +112,10 @@ const shared_data = {
     localStorage.setItem("favorite_list", favorite_list);
     this.favorite_list = favorite_list;
   },
+  updateWatchedList(watched_list) {
+    localStorage.setItem("watched_list", watched_list);
+    this.watched_list = watched_list;
+  },
   setLastSearch(searchDetails){
     this.lastSearch = searchDetails;
     sessionStorage.setItem("lastSearch", this.lastSearch);

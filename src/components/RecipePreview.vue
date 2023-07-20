@@ -116,7 +116,7 @@ export default {
     async updateWatchedList() {
       try {
         const response = await this.axios.get(
-          `${this.$root.store.serverDomain}/users/allLastWatchedRecipes`
+          `${this.$root.store.serverDomain}/users/lastseen`
         );
         const recipes = response.data;
         this.$root.store.updateWatchedList([...recipes]);
@@ -128,6 +128,9 @@ export default {
       const recipeId = this.recipe.id;
       const watchedList = this.$root.store.watchedList;
       this.isWatched = watchedList.some((recipe) => recipe.id === recipeId);
+      if (this.isWatched) {
+      this.isWatched = true; // Set it to true explicitly
+  }
     },
   },
 };
