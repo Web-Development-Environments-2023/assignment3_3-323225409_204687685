@@ -189,7 +189,7 @@ a:hover {
 
 .header {
   margin-bottom: 30px;
-  color: rgb(215, 141, 52);
+  color: rgb(224, 147, 53);
   text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
 }
 
