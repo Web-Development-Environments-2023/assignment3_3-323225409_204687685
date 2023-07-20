@@ -200,6 +200,7 @@ a:hover {
   margin-bottom: 40px;
 }
 
+
 .project-image img {
   max-width: 100%;
   border-radius: 10px;
