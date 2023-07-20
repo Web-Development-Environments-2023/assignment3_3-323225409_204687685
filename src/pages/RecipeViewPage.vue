@@ -49,6 +49,7 @@
         </div>
       </div>
     </div>
+
     <div class="recipe-body">
       <div class="recipe-ingredients">
         <b><u>Ingredients:</u></b>
@@ -229,6 +230,12 @@ export default {
   margin-bottom: 10px;
   color: #333;
 }
+/* .title{
+  text-align: center;
+  padding: 10px 10px;
+  color: rgb(174, 109, 45);
+  font-weight: 700;
+} */
 
 .image {
   max-width: 100%;

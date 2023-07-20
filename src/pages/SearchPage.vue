@@ -425,6 +425,7 @@ export default {
   font-family: 'KG First Time In Forever', sans-serif;
   font-weight: 900;
   border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .title{
   text-align: center;

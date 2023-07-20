@@ -1,8 +1,14 @@
 <template>
     <!-- <b-navbar type="dark" variant="info" class="nav-bar"> -->
     <VueScrollFixedNavbar>
-      <b-navbar toggleable="lg"  class="nav-bar">    
-        <router-link tag="b-navbar-brand" :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Recipe Site</router-link>
+      <b-navbar toggleable="lg"  class="nav-bar"> 
+
+        <div class="project-image">
+          <img src= "../assets/logo.jpg"  />
+        </div>
+
+        <router-link tag="b-navbar-brand" :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Foodie</router-link>
+        
         <!-- Home -->
         <b-navbar-nav>
           <router-link tag="b-nav-item" :to="{name:'main'}"><b style="color: rgb(0, 0, 0)">Home</b></router-link>
@@ -90,7 +96,7 @@
     top: 0;
     z-index: 10;
     font-family: cursive;
-    background-color: rgb(237, 211, 178)!important;
+    background-color: rgba(241, 215, 182, 0.564)!important;
     height:50px ;
     color: white;
   }
@@ -106,4 +112,12 @@
   .bold-option{
     font-weight: 800;
   }
+
+/* .project-image{
+  height: 10px;
+  width: 100px;
+} */
+
+
+
   </style>
