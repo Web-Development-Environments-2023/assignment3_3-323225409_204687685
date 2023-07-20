@@ -2,7 +2,7 @@
   <div class="recipe-container">
     <div class="recipe-details">
       <div class="recipe-header">
-        <!-- <h1 class="title">{{ recipe.title }}</h1> -->
+        <h1 class="title">{{ recipe.title }}</h1>
         <img :src="recipe.image" class="image" alt="Recipe Image" />
       </div>
       <div class="recipe-info">
