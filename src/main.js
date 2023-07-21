@@ -93,6 +93,7 @@ const shared_data = {
   username: localStorage.username,
   lastSearch: sessionStorage.lastSearch,
   favorite_list: localStorage.favorite_list,
+  watched_list: localStorage.watched_list,
   // username: "Ayelet",
   login(username) {
     localStorage.setItem("username", username);

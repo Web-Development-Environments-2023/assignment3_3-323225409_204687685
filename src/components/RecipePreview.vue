@@ -59,6 +59,7 @@ export default {
     if (this.$root.store.username) {
       this.checkifWatched();
       this.checkifFavorite();
+      this.updateWatchedList();
     }
   },
   data() {
@@ -113,6 +114,9 @@ export default {
       const recipeId = this.recipe.id;
       const favoriteList = this.$root.store.favoriteList;
       this.isFavorite = favoriteList.some((recipe) => recipe.id === recipeId);
+      if (this.isFavorite) {
+        this.isFavorite = true;
+      }
     },
     async updateWatchedList() {
       try {
@@ -129,9 +133,6 @@ export default {
       const recipeId = this.recipe.id;
       const watchedList = this.$root.store.watchedList;
       this.isWatched = watchedList.some((recipe) => recipe.id === recipeId);
-      if (this.isWatched) {
-      this.isWatched = true; // Set it to true explicitly
-  }
     },
   },
 };
