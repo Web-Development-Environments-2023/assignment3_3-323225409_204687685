@@ -106,6 +106,7 @@ export default {
       let response;
       let path = "/recipes/";
       let id = this.$route.params.recipeId;
+      console.log(this.$route.params);
       if (this.$route.params.route_name === "/users/MyRecipes") {
         path = "/users/MyRecipes/";
         this.myRecipe = true;

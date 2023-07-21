@@ -1,7 +1,7 @@
 <template>
   <div class="recipe-card">
     <div class="recipe-card-image">
-      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipe-preview" @click.native="checkifWatched()">
+      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id, route_name: this.route_name } }" class="recipe-preview" @click.native="checkifWatched()">
         <img :src="recipe.image" alt="Recipe Image" class="recipe-image">
       </router-link>
     </div>
@@ -12,16 +12,16 @@
           <img src="../assets/prep_time.png" alt="Preparation Time" class="detail-icon">
           <span class="detail-text">{{ recipe.readyInMinutes }} mins</span>
         </div>
-        <div class="recipe-detail">
+        <div v-if="recipe.aggregateLikes" class="recipe-detail">
           <img src="../assets/like.png" alt="Likes" class="detail-icon">
           <!-- aggregate likes -->
           <span class="detail-text">{{ recipe.aggregateLikes }} Likes</span>
           
         </div>
-        <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
+        <div v-if="recipe.isFavorite && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
           <img src="../assets/star.png" alt="Favorite" class="detail-icon">
         </div>
-        <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
+        <div v-if="!recipe.isFavorite && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
           <button @click="addToFavorites(recipe.id)" class="heart-button">
             <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
           </button>
@@ -73,7 +73,7 @@ export default {
       type: Object,
       required: true,
     },
-    routeName: {
+    route_name: {
       type: String,
       required: false,
     },
