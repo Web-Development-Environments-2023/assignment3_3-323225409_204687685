@@ -100,11 +100,9 @@ export default {
   },
   async created() {
     try {
-      console.log("Im here");
       let response;
       let path = "/recipes/";
       let id = this.$route.params.recipeId;
-      // console.log(this.$route.params);
       if (this.$route.params.route_name === "/users/MyRecipes") {
         path = "/users/MyRecipes/";
         this.myRecipe = true;
@@ -115,7 +113,7 @@ export default {
       }
       try {
         response = await this.axios.get(
-          this.$root.store.server_domain + path + id
+          this.$root.store.server_domain + path + "totalRecipeInfo/" + id
         );
         if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
@@ -146,15 +144,14 @@ export default {
         creator,
         customary
       } = _response;
-
+      instructions = instructions[0].steps
       // Check if the JSON data is defined before parsing
-      ingredients = ingredients ? JSON.parse(ingredients) : [];
-      instructions = instructions ? JSON.parse(instructions) : [];
-
+      // ingredients = ingredients ? JSON.parse(ingredients) : [];
+      // instructions = instructions ? JSON.parse(instructions) : [];
       // Rest of the data processing remains unchanged
 
       let _recipe = {
-        _instructions: instructions,
+        instructions: instructions,
         ingredients: ingredients,
         popularity,
         readyInMinutes,
@@ -170,6 +167,7 @@ export default {
         customary
       };
       this.recipe = _recipe;
+      console.log(this.recipe);
     } catch (error) {
       console.log(error);
     }

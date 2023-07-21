@@ -7,7 +7,7 @@
           <img src= "../assets/logo.jpg"  />
         </b-navbar-nav>
 
-        <router-link :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Foodie</router-link>
+        <router-link tag="b-navbar-brand" :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Foodie</router-link>
         
         <!-- Home -->
         <b-navbar-nav>
@@ -30,23 +30,17 @@
             <CreateRecipePage v-if="createRecipeClicked"></CreateRecipePage>
         </b-navbar-nav>
           <!-- Personal dropdown: Favorites, My Recipes, My Family Recipes -->
-          <b-nav-item-dropdown class="bold-option">
-            <template v-slot:button-content>
-              Personal
-            </template>
-            <router-link :to="{name:'FavoritePage'}"><b style="color: white" >Favorites</b></router-link>     
-            <router-link :to="{name:'MyRecipesPage'}"><b style="color: white">My Recipes</b></router-link>
-            <router-link :to="{name:'FamilyRecipes'}"><b style="color: white">My Family Recipes</b></router-link>
+          <b-nav-item-dropdown text="Personal" class="bold-option">
+            <router-link tag="b-dropdown-item" :to="{name:'FavoritePage'}"><b style="color: white" >Favorites</b></router-link>     
+            <router-link tag="b-dropdown-item" :to="{name:'MyRecipesPage'}"><b style="color: white">My Recipes</b></router-link>
+            <router-link tag="b-dropdown-item" :to="{name:'FamilyRecipes'}"><b style="color: white">My Family Recipes</b></router-link>
           </b-nav-item-dropdown>
         </b-navbar-nav>
         <!-- Hello guest dropdown: Register & Login -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown v-if="!$root.store.username" right class="bold-option" style="color:white ;">
-            <template v-slot:button-content>
-              Hello guest
-            </template>
-            <router-link :to="{name:'register'}"><b style="color:white ;">Register</b></router-link>
-            <router-link :to="{name:'login'}"><b style="color:white ;">Login</b></router-link>
+          <b-nav-item-dropdown v-if="!$root.store.username" right class="bold-option" text="Hello guest" style="color:white ;">
+            <router-link tag="b-dropdown-item" :to="{name:'register'}"><b style="color:white ;">Register</b></router-link>
+            <router-link tag="b-dropdown-item" :to="{name:'login'}"><b style="color:white ;">Login</b></router-link>
           </b-nav-item-dropdown>
           <!-- Logout -->
           <span v-else>

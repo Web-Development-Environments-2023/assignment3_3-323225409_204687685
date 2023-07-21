@@ -42,6 +42,7 @@ export default {
       try {
         const response = await this.axios.get(this.$root.store.server_domain + this.route_name);
         this.recipes = response.data;
+        console.log(this.recipes);
       } catch (error) {
         console.log(error);
       }
