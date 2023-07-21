@@ -18,10 +18,10 @@
           <span class="detail-text">{{ recipe.aggregateLikes }} Likes</span>
           
         </div>
-        <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/FamilyRecipes'" class="recipe-detail">
+        <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/myRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
           <img src="../assets/star.png" alt="Favorite" class="detail-icon">
         </div>
-        <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/FamilyRecipes'" class="recipe-detail">
+        <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/myRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
           <button @click="addToFavorites(recipe.id)" class="heart-button">
             <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
           </button>
@@ -244,21 +244,25 @@ export default {
   font-weight: 700;
   font-family: calibri;
   color: rgb(14, 14, 14);
+  text-align: center;
 }
 
-.detail-icon {
-  width: 40px;
-  height: 40px;
+.recipe-card-image {
+  /* Set a fixed aspect ratio to maintain the image's proportions */
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio (height/width) */
+  position: relative;
+  overflow: hidden;
 }
 
-.info-icon {
-  width: 50px;
-  height: 40px;
-}
-
-.personal-icon {
-  width: 40px;
-  height: 40px;
+.recipe-card-image img {
+  /* Position the image to cover the entire container */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Scale the image while maintaining aspect ratio */
 }
 
 .recipe-details,
@@ -276,6 +280,13 @@ export default {
 
 .recipe-info .info-item {
   margin-right: 10px;
+}
+
+.detail-icon,
+.info-icon,
+.personal-icon {
+  width: 25px; /* Adjust the size as needed */
+  height: 24px; /* Adjust the size as needed */
 }
 
 .recipe-meta {
