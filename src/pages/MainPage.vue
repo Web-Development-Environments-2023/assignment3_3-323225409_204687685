@@ -13,9 +13,9 @@
       <b-col class="AuthButtonsCol" sm="6">
         <div class="content-container">
          
-          <router-link class="button" tag="login-button" to="/login">Login</router-link>
-          <router-link class="button" tag="register-button" to="/register">Register</router-link>
-          <b-button class="button" tag="random-button" @click="updateRandomRecipes">Refresh recipes</b-button>
+          <router-link class="button" to="/login">Login</router-link>
+          <router-link class="button" to="/register">Register</router-link>
+          <b-button class="button" @click="updateRandomRecipes">Refresh recipes</b-button>
         </div>
       </b-col>
     </b-row>
@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     async updateRandomRecipes() {
+      console.log(this.$refs);
       await this.$refs.random.updateRecipes();
     },
   },

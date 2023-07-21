@@ -13,7 +13,9 @@ const router = new VueRouter({
 });
 
 import Vuelidate from "vuelidate";
-
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+import VueScrollFixedNavbar from "vue-scroll-fixed-navbar";
 
 import { BFormRadio } from 'bootstrap-vue';
 Vue.component('b-form-radio', BFormRadio);
@@ -22,9 +24,8 @@ import { BootstrapVue, IconsPlugin, ModalPlugin } from 'bootstrap-vue';
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(ModalPlugin);
+Vue.use(VueScrollFixedNavbar);
 
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import {
   FormGroupPlugin,
@@ -38,7 +39,6 @@ import {
   ToastPlugin,
   LayoutPlugin,
   FormRadioPlugin,
-  // ModalPlugin,
   FormCheckboxPlugin,
   FormTextareaPlugin,
   ListGroupPlugin,
@@ -55,11 +55,9 @@ import {
   ToastPlugin,
   LayoutPlugin,
   FormRadioPlugin,
-  ModalPlugin,
   FormCheckboxPlugin,
   FormTextareaPlugin,
   ListGroupPlugin,
-
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 axios.defaults.withCredentials=true;

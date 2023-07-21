@@ -3,44 +3,50 @@
     <VueScrollFixedNavbar>
       <b-navbar toggleable="lg"  class="nav-bar"> 
 
-        <div class="project-image">
+        <b-navbar-nav id="logo">
           <img src= "../assets/logo.jpg"  />
-        </div>
+        </b-navbar-nav>
 
-        <router-link tag="b-navbar-brand" :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Foodie</router-link>
+        <router-link :to="{name:'main'}" style="font-weight: 1000; color: rgb(215, 141, 52)">Foodie</router-link>
         
         <!-- Home -->
         <b-navbar-nav>
-          <router-link tag="b-nav-item" :to="{name:'main'}"><b style="color: rgb(0, 0, 0)">Home</b></router-link>
+          <router-link :to="{name:'main'}"><b style="color: rgb(0, 0, 0)">Home</b></router-link>
         </b-navbar-nav>
         <!-- Search -->
         <b-navbar-nav>
-          <router-link tag="b-nav-item" :to="{name:'search'}"><b style="color: rgb(0, 0, 0)">Search</b></router-link >
+          <router-link :to="{name:'search'}"><b style="color: rgb(0, 0, 0)">Search</b></router-link >
         </b-navbar-nav>
         <!-- About -->
         <b-navbar-nav>
-          <router-link tag="b-nav-item" to="/AboutUs"><b style="color: rgb(0, 0, 0)">About</b></router-link>
+          <router-link to="/AboutUs"><b style="color: rgb(0, 0, 0)">About</b></router-link>
         </b-navbar-nav>
         <!-- Registred user  -->
         <b-navbar-nav v-if="$root.store.username">
           <!-- Create Recipe Modal -->
           <b-navbar-nav>
-          <b-nav-item v-b-modal.modal-1 id="modal-1" tag="b-nav-item" @click="showModal"
+          <b-nav-item v-b-modal.modal-1 id="modal-1" @click="showModal"
             ><b style="color: rgb(0, 0, 0)">Create Recipe</b></b-nav-item>
             <CreateRecipePage v-if="createRecipeClicked"></CreateRecipePage>
         </b-navbar-nav>
           <!-- Personal dropdown: Favorites, My Recipes, My Family Recipes -->
-          <b-nav-item-dropdown text="Personal" class="bold-option">
-            <router-link tag="b-dropdown-item" :to="{name:'FavoritePage'}"><b style="color: white" >Favorites</b></router-link>     
-            <router-link tag="b-dropdown-item" :to="{name:'MyRecipesPage'}"><b style="color: white">My Recipes</b></router-link>
-            <router-link tag="b-dropdown-item" :to="{name:'FamilyRecipes'}"><b style="color: white">My Family Recipes</b></router-link>
+          <b-nav-item-dropdown class="bold-option">
+            <template v-slot:button-content>
+              Personal
+            </template>
+            <router-link :to="{name:'FavoritePage'}"><b style="color: white" >Favorites</b></router-link>     
+            <router-link :to="{name:'MyRecipesPage'}"><b style="color: white">My Recipes</b></router-link>
+            <router-link :to="{name:'FamilyRecipes'}"><b style="color: white">My Family Recipes</b></router-link>
           </b-nav-item-dropdown>
         </b-navbar-nav>
         <!-- Hello guest dropdown: Register & Login -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown v-if="!$root.store.username" right class="bold-option" text="Hello guest" style="color:white ;">
-            <router-link tag="b-dropdown-item" :to="{name:'register'}"><b style="color:white ;">Register</b></router-link>
-            <router-link tag="b-dropdown-item" :to="{name:'login'}"><b style="color:white ;">Login</b></router-link>
+          <b-nav-item-dropdown v-if="!$root.store.username" right class="bold-option" style="color:white ;">
+            <template v-slot:button-content>
+              Hello guest
+            </template>
+            <router-link :to="{name:'register'}"><b style="color:white ;">Register</b></router-link>
+            <router-link :to="{name:'login'}"><b style="color:white ;">Login</b></router-link>
           </b-nav-item-dropdown>
           <!-- Logout -->
           <span v-else>
@@ -49,7 +55,7 @@
                 <b-col>
                   <b-navbar-item><h3 style="color:rgb(0, 0, 0) ;">Hello {{$root.store.username}}</h3></b-navbar-item>  
                 </b-col> 
-                <router-link v-b-modal.modal-1 id="modal-1" tag="b-nav-item" to="/" @click.native="Logout()" ><b style="color:rgb(255, 0, 0) ;">Logout</b></router-link>
+                <router-link v-b-modal.modal-1 id="modal-1" to="/" @click.native="Logout()" ><b style="color:rgb(255, 0, 0) ;">Logout</b></router-link>
               </b-row>
               <!-- <button @click="Logout" id="button"><b>Logout</b></button> -->
             </b-nav-item>
@@ -113,11 +119,10 @@
     font-weight: 800;
   }
 
-/* .project-image{
-  height: 10px;
-  width: 100px;
-} */
-
-
+  #logo{
+    zoom: 7%;
+    margin-left: -25vw;
+    margin-right: 5vw;
+  }
 
   </style>

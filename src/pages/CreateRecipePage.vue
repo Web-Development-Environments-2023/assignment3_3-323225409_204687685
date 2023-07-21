@@ -88,6 +88,7 @@
 
 <script>
 export default {
+  name: "CreateRecipePage",
 data() {
   return {
     form: {

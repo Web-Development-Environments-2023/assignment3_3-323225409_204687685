@@ -11,6 +11,7 @@ export default {
       RecipePreviewList,
   },
   mounted() {
+    console.log(this.$refs);
     this.$refs.myRecipes.updateMyRecipes();
   },
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="recipe-card">
     <div class="recipe-card-image">
-      <router-link :to="{name: 'recipe', params: {recipeId: recipe.id, routeName: this.routeName}}" class="recipe-link">
+      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipe-preview" @click.native="checkifWatched()">
         <img :src="recipe.image" alt="Recipe Image" class="recipe-image">
       </router-link>
     </div>
@@ -51,6 +51,7 @@
 
 <script>
 export default {
+  name: "RecipePreview",
   mounted() {
     this.axios.get(this.recipe.image).then(() => {
       this.imageLoaded = true;
