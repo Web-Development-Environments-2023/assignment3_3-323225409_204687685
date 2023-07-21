@@ -62,10 +62,13 @@
         </div>
         <div class="recipe-instructions">
           <b><u>Instructions:</u></b>
-          <ol>
+          <ol v-if="recipe.instructions.length !== 0">
             <li v-for="step in recipe.instructions" :key="step.number">
               {{ step.step }}
             </li>
+          </ol>
+          <ol v-else>
+              <p>Sorry! There is no instructions to show.</p>
           </ol>
         </div>
       </div>
@@ -121,7 +124,6 @@ export default {
         this.$router.replace("/NotFound");
         return;
       }
-
       let _response;
       if (this.myRecipe || this.familyRecipes) {
         _response = response.data[0];
@@ -144,7 +146,9 @@ export default {
         creator,
         customary
       } = _response;
-      instructions = instructions[0].steps
+      if (instructions.length !== 0){
+        instructions = instructions[0].steps;
+      }
       // Check if the JSON data is defined before parsing
       // ingredients = ingredients ? JSON.parse(ingredients) : [];
       // instructions = instructions ? JSON.parse(instructions) : [];
@@ -167,7 +171,6 @@ export default {
         customary
       };
       this.recipe = _recipe;
-      console.log(this.recipe);
     } catch (error) {
       console.log(error);
     }
