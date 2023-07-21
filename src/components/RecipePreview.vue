@@ -1,7 +1,7 @@
 <template>
   <div class="recipe-card">
     <div class="recipe-card-image">
-      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id } }" class="recipe-preview" @click.native="checkifWatched()">
+      <router-link :to="{name: 'recipe', params: {recipeId: recipe.id, routeName: this.routeName}}" class="recipe-link">
         <img :src="recipe.image" alt="Recipe Image" class="recipe-image">
       </router-link>
     </div>
@@ -18,10 +18,10 @@
           <span class="detail-text">{{ recipe.aggregateLikes }} Likes</span>
           
         </div>
-        <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
+        <div v-if="recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/FamilyRecipes'" class="recipe-detail">
           <img src="../assets/star.png" alt="Favorite" class="detail-icon">
         </div>
-        <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
+        <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/MyRecipes' && this.routeName !== '/users/FamilyRecipes'" class="recipe-detail">
           <button @click="addToFavorites(recipe.id)" class="heart-button">
             <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
           </button>
@@ -29,7 +29,7 @@
       </div>
       <div class="recipe-info">
         <div v-if="recipe.glutenFree" class="info-item">
-          <img src="../assets/gluten.png" alt="Gluten-Free" class="info-icon">
+          <img src="../assets/gluten.png" alt="Gluten" class="info-icon">
           <span class="info-text">Gluten-Free</span>
         </div>
         <div v-if="recipe.vegan" class="info-item">
@@ -43,7 +43,7 @@
       </div>
       <div v-if="recipe.isWatched" class="personal-info">
         <img src="../assets/watched.png" alt="Watched Recipe" class="personal-icon">
-        <span class="personal-text">Viewed Recipe</span>
+        
       </div>
     </div>
   </div>
