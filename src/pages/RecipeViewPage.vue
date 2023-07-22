@@ -219,6 +219,7 @@ export default {
   background-color: #eee4db8a;
   font-family: cursive;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 
 #serv{
@@ -251,6 +252,7 @@ export default {
 #totl{
   color: rgb(224, 147, 53);
   text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
+  font-weight: bold;
 
 }
 /* .title{
