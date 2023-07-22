@@ -23,7 +23,7 @@
         </div>
         <div v-if="!recipe.isFavorite && $root.store.username && this.routeName !== '/users/myRecipes' && this.routeName !== '/users/familyRecipes'" class="recipe-detail">
           <button @click="addToFavorites(recipe.id)" class="heart-button">
-            <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
+            <img src="../assets/addfavorite.png" alt="Add to Favorites" class="info-icon">
           </button>
         </div>
       </div>
@@ -42,7 +42,7 @@
         </div>
       </div>
       <div v-if="recipe.isWatched" class="personal-info">
-        <img src="../assets/watched.png" alt="Watched Recipe" class="personal-icon">
+        <img src="../assets/watched.png" alt="Watched Recipe" class="info-icon">
         
       </div>
     </div>
@@ -64,9 +64,10 @@ export default {
   },
   data() {
     return {
-      imageLoaded: false,
       isWatched: false,
       isFavorite: false,
+      imageLoaded: false,
+      
     };
   },
   props: {
@@ -133,6 +134,9 @@ export default {
       const recipeId = this.recipe.id;
       const watchedList = this.$root.store.watchedList;
       this.isWatched = watchedList.some((recipe) => recipe.id === recipeId);
+      if (this.isWatched) {
+        this.isWatched = true;
+      }
     },
   },
 };

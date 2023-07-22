@@ -35,7 +35,7 @@
             <img src="../assets/gluten.png" class="icon" />
             <span>Gluten Free</span>
           </div>
-          <!-- Add other recipe options based on conditions -->
+          
           <div v-if="recipe.isFavorite && showAddToFavorites">
             <b-button @click="addToFavorites(recipe.id)" class="heart-button">
               <img src="../assets/logo.png" class="icon" />
@@ -80,7 +80,8 @@ export default {
       recipe: null,
       myRecipe: false,
       familyRecipes: false,
-      showAddToFavorites: true // Add this variable and set it to true to display the heart button
+      showAddToFavorites: true,
+      
     };
   },
   methods: {
@@ -102,15 +103,16 @@ export default {
     try {
       console.log("Im here");
       let response;
+      
       let path = "/recipes/";
       let id = this.$route.params.recipeId;
       // console.log(this.$route.params);
       if (this.$route.params.route_name === "/users/MyRecipes") {
-        path = "/users/MyRecipes/";
+        path = "/users/myRecipes/";
         this.myRecipe = true;
       }
       if (this.$route.params.route_name === "/users/FamilyRecipes") {
-        path = "/users/FamilyRecipes/";
+        path = "/users/familyRecipes/";
         this.familyRecipes = true;
       }
       try {

@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <b-row>
-      <!-- Left side of the screen -->
+      
       <b-col class="RandomRecipesCol" sm="7">
         <div class="content-container">
           <h1 class="section-title">Explore These Recipes</h1>
@@ -13,14 +13,14 @@
           <b-button class="refresh-button" @click="$refs.random.updateRecipes()">Refresh Random Recipes</b-button>
         </div>
       </b-col>
-      <!-- Right side of the screen -->
+      
       <b-col class="LastWatchedOrLoginCol" sm="5">
-        <!-- if user is logged in -->
+        
         <div v-if="$root.store.username">
           <h1 class="section-title">Last Watched Recipes</h1>
           <RecipePreviewList ref="watched"  route_name="/users/lastseen" class="LastWatchedRecipes"/>
         </div>
-        <!-- if user is not logged in -->
+        
         <div v-else>
           
           <LoginPage class="login"></LoginPage>
