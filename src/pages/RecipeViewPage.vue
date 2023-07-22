@@ -3,15 +3,16 @@
     <div v-if="recipe">
       <div class="recipe-details">
         <div class="recipe-header">
-          <h1 class="title">{{ recipe.title }}</h1>
+          <h1 id="totl" class="title">{{ recipe.title }}</h1>
           <img :src="recipe.image" class="image" alt="Recipe Image" />
         </div>
+
         <div class="recipe-info">
           <div class="info-item">
             <img src="../assets/prep_time.png" class="icon" />
             <span>{{ recipe.readyInMinutes }} minutes</span>
           </div>
-          <div class="info-item">
+          <div id="serv" class="info-item">
             <img src="../assets/persons.png" class="icon" />
             <span>{{ recipe.servings }} servings</span>
           </div>
@@ -52,6 +53,8 @@
       </div>
 
       <div class="recipe-body">
+
+        
         <div class="recipe-ingredients">
           <b><u>Ingredients:</u></b>
           <ul>
@@ -60,6 +63,8 @@
             </li>
           </ul>
         </div>
+        <br>
+        
         <div class="recipe-instructions">
           <b><u>Instructions:</u></b>
           <ol v-if="recipe.instructions && recipe.instructions.length !== 0">
@@ -71,6 +76,8 @@
               <p>Sorry! There is no instructions to show.</p>
           </ol>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -205,25 +212,46 @@ export default {
   display: flex;
   justify-content: center;
   gap: 20px;
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 4vh;
+  /* text-align: center; */
+  background-color: #eee4db8a;
+  font-family: cursive;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#serv{
+  margin-right: 16vw;
+}
 .recipe-details {
-  max-width: 800px;
+  max-width: 100%;
   padding: 30px;
-  background-color: #fff;
+  background-color: #fffdfba7;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  zoom: 80%;
+  
 }
 
 .recipe-header {
   text-align: center;
   margin-bottom: 20px;
+  color: rgb(224, 147, 53);
+  text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
 }
 
 .title {
   font-size: 36px;
   margin-bottom: 10px;
   color: #333;
+  
+}
+
+#totl{
+  color: rgb(224, 147, 53);
+  text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
+
 }
 /* .title{
   text-align: center;
@@ -243,22 +271,29 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-left: 30vw;
 }
 
 .info-item {
   display: flex;
   align-items: center;
   color: #666;
+  /* margin-left: 100px; */
+
 }
 
 .icon {
   width: 24px;
   height: 24px;
   margin-right: 8px;
+  /* margin-left: 100px; */
+
 }
 
 .recipe-options {
   margin-bottom: 20px;
+  margin-left: 30vw;
+
 }
 
 .recipe-options div {
@@ -266,11 +301,13 @@ export default {
   align-items: center;
   margin-bottom: 5px;
   color: #666;
+  /* margin-left: 100px; */
 }
 
 .recipe-ingredients,
 .recipe-instructions {
   flex: 1;
+  /* padding-top: 100px; */
 }
 
 .recipe-ingredients li,
@@ -304,7 +341,8 @@ export default {
 .recipe-ingredients,
 .recipe-instructions {
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #fffdfba7;
+  /* background-color: #f8f8f8; */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -354,7 +392,8 @@ export default {
 
 .recipe-ingredients,
 .recipe-instructions {
-  background-color: #fff;
+  /* background-color: #fff; */
+  background-color: #fffdfba7;
 }
 
 .recipe-options div {
