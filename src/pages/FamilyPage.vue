@@ -39,23 +39,27 @@
 
    <template>
     <div class="family-page">
-      <h1>Family Recipes</h1>
-      <p>
+      <h1>Our Family Recipes</h1>
+      <p id="primeText">
         Our family recipes are cherished heirlooms, passed down through generations, each one holding the essence of our shared history and love. With every bite, you can taste the warmth, tradition, and togetherness that define our culinary heritage.    
-      </p>
+      </p >
+
+      <div class="project-image">
+      <img src= "../assets/family.png" alt="Foodie Recipes" />
+    </div>
   
       <div class="family-recipes">
         <div v-for="recipe in familyRecipes" :key="recipe.title" class="family-recipe">
           <h3>{{ recipe.title }}</h3>
           <h4>Chef: {{recipe.chef}}</h4>
-          <h2>{{recipe.description}}</h2>
+          <h2 id="desc">{{recipe.description}}</h2>
           <img :src="recipe.image" :alt="recipe.title" class="image" />
-          <h2>Ingredients:</h2>
-          <ul>
+          <h2 >Ingredients:</h2>
+          <ul id="list">
             <li v-for="ingredient in recipe.ingredients" :key="ingredient">{{ ingredient }}</li>
           </ul>
           <h2>Instructions:</h2>
-          <ul>
+          <ul id="list">
             <li v-for="instruction in recipe.instructions" :key="instruction">{{ instruction }}</li>
           </ul>
         </div>
@@ -108,28 +112,70 @@
   .family-page {
     max-width: 80%;
     margin: 0 auto;
-    padding: 3vh;
+    padding: 4vh;
+    text-align: center;
+    background-color: #eee4db8a;
+    font-family: cursive;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
+
+  #desc{
+    font-size: 1.5vw;
+    color: rgb(63, 64, 68);
+
+  }
+
+#list{
+  text-align: left;
+}
+
   .family-page h1 {
     font-weight: bold;
-    font-size: 5vw;
+    font-size: 2.5vw;
     margin-top: 1.5vw;
     text-align: center;
+    margin-bottom: 30px;
+    color: rgb(224, 147, 53);
+    text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
   }
+
+  #primeText{
+    /* font-weight: bold; */
+    font-size: 1.5vw;
+    /* margin-top: 1.5vw; */
+    text-align: center;
+    margin-bottom: 30px;
+    color: rgb(184, 119, 38);
+    text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
+
+  }
+
+  .project-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  height: 22vh;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
   
   .family-page p {
     font-size: 2vw;
     line-height: 1.5;
+    
   }
+
+  
   
   .family-recipes {
-    justify-content: center;
+    
+    font-size: 15vw;
   }
   
   .family-recipe {
     margin-top: 6vw;
     margin-bottom: 2vw;
+    color: rgb(63, 64, 68);
+    font-size: 1.2vw;
   }
   
   .image {
@@ -146,19 +192,22 @@
   
   .family-recipe h3 {
     margin-top: 1vw;
-    font-size: 3vw;
+    font-size: 2vw;
     font-weight: bold;
-    color: goldenrod;
+    color: rgb(184, 119, 38);
+    text-shadow: 4px 4px 6px rgba(87, 46, 10, 0.3);
   }
   
   .family-recipe h4 {
     margin-top: 1vw;
-    font-size: 2vw;
+    font-size: 1.5vw;
     font-weight: bold;
-    color: goldenrod;
+    color: rgb(224, 147, 53);
   }
   
   .family-recipe ul {
     font-size: 1.5vw;
+    /* justify-content: left; */
+
   }
   </style>

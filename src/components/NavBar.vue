@@ -96,7 +96,7 @@
     top: 0;
     z-index: 10;
     font-family: cursive;
-    background-color: rgba(241, 215, 182, 0.564)!important;
+    background-color: rgba(241, 215, 182, 0.785)!important;
     height:50px ;
     color: white;
   }
