@@ -48,8 +48,8 @@
         >Login</b-button
       >
       <div class="mt-2">
-        Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        Do not have an account yet? <br>
+        <router-link id="links" to="register"> Register in here !</router-link>
       </div>
     </b-form>
     <b-alert
@@ -136,31 +136,35 @@ export default {
 <style lang="scss" scoped>
 .container {
   max-width: 400px;
+  font-family: "Comic Sans MS";
+  // box-shadow: 0 4px 8px rgba(199, 29, 29, 0.2);
 }
 .title {
-  font-family: "Roboto", Arial, sans-serif;
+  // font-family: "Roboto", Arial, sans-serif;
   font-size: 36px;
-  color: #333333;
+  color: rgb(215, 141, 52);
   font-weight: bold;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
+  margin-left: 80px;
 }
 .field {
-  font-family: "Arial", sans-serif;
-  font-size: 14px;
-  color: #666666;
+  // font-family: "Comic Sans MS";
+  font-size: 16px;
+  color: #4a4a4a;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .btnReg {
-  width: 100%;
-  padding: 15px 20px;
-  background-color: #FF9800;
+  width: 75%;
+  padding: 11px 12px;
+  background-color: rgb(215, 141, 52);
   border: none;
   border-radius: 4px;
   font-weight: bold;
   color: #FFFFFF;
+  margin-left: 95px;
   margin-bottom: 20px;
   text-transform: uppercase;
   cursor: pointer;
@@ -188,6 +192,30 @@ export default {
 }
 
 .btnReg:hover {
-  background-color: #FFD54F;
+  background-color: #e5a95bd2;
 }
+
+
+.mt-2{
+  font-size: 14px;
+  color: #4a4a4a;
+  font-weight: bold;
+  margin-left: 140px;
+  
+}
+
+#links{
+  margin-left: 33px;
+  font-weight: bold;
+  color: #ff8400;
+  font-size: 15px;
+
+}
+
+#links:hover{
+  color: #579c3b;
+
+}
+
 </style>
+

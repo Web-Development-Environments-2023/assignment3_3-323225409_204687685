@@ -237,9 +237,9 @@ methods: {
 </script>
 
 <style scoped>
-/deep/ .createtitle{
+/* /deep/ .createtitle{
   background-color: aqua;
-}
+} */
 
 .createButtons{
   background-color: blue;

@@ -228,6 +228,10 @@ export default {
 }
 
 </style> -->
+
+
+
+
 <style scoped>
 .recipe-card {
   align-content: center;
