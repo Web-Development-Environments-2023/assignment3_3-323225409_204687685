@@ -83,6 +83,9 @@ export default {
       this.recipe.isFavorite = newValue;
     },
   },
+  mounted(){
+    console.log(this.recipe);
+  },
   methods: {
     async addToFavorites(recipeId){
       try {

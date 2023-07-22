@@ -115,8 +115,8 @@
 
   #logo{
     zoom: 7%;
-    margin-left: -25vw;
-    margin-right: 5vw;
+    margin-left: -16vw;
+    margin-right: 6vw;
   }
 
   </style>

@@ -62,7 +62,7 @@
         </div>
         <div class="recipe-instructions">
           <b><u>Instructions:</u></b>
-          <ol v-if="recipe.instructions.length !== 0">
+          <ol v-if="recipe.instructions && recipe.instructions.length !== 0">
             <li v-for="step in recipe.instructions" :key="step.number">
               {{ step.step }}
             </li>
@@ -86,6 +86,16 @@ export default {
       showAddToFavorites: true // Add this variable and set it to true to display the heart button
     };
   },
+  props: {
+    recipeId: {
+      type: Object,
+      required: false,
+    },
+    route_name: {
+      type: String,
+      required: false,
+    },
+  },
   methods: {
     async addToFavorites(recipeId) {
       try {
@@ -106,9 +116,8 @@ export default {
       let response;
       let path = "/recipes/";
       let id = this.$route.params.recipeId;
-      console.log(this.$route.params);
-      if (this.$route.params.route_name === "/users/MyRecipes") {
-        path = "/users/MyRecipes/";
+      if (this.$route.params.route_name === "/users/myRecipes") {
+        path = "/users/myRecipes/";
         this.myRecipe = true;
       }
       if (this.$route.params.route_name === "/users/FamilyRecipes") {
@@ -116,9 +125,16 @@ export default {
         this.familyRecipes = true;
       }
       try {
-        response = await this.axios.get(
+        if(path === "/recipes/"){
+          response = await this.axios.get(
           this.$root.store.server_domain + path + "totalRecipeInfo/" + id
         );
+        }
+        else{
+          response = await this.axios.get(
+          this.$root.store.server_domain + path + "fullRecipe/" + id
+        );
+        }
         if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
@@ -147,8 +163,11 @@ export default {
         creator,
         customary
       } = _response;
-      if (instructions.length !== 0){
+      if (instructions instanceof Array && instructions.length !== 0){
         instructions = instructions[0].steps;
+      }
+      else{
+        instructions = null
       }
       // Check if the JSON data is defined before parsing
       // ingredients = ingredients ? JSON.parse(ingredients) : [];
@@ -172,6 +191,7 @@ export default {
         customary
       };
       this.recipe = _recipe;
+      console.log(this.recipe);
     } catch (error) {
       console.log(error);
     }

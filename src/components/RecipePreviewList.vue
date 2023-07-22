@@ -89,7 +89,7 @@ export default {
     <div class="list-container">
       <h3 class="title">{{ title }}</h3>
       <div class="recipe-preview-wrapper">
-        <RecipePreview v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" />
+        <RecipePreview v-for="recipe in recipes" :key="recipe.id" :recipe="recipe" :route_name="route_name" />
       </div>
     </div>
   </div>
@@ -120,6 +120,7 @@ export default {
     };
   },
   mounted() {
+    
     this.updateRecipes();
   },
   methods: {
