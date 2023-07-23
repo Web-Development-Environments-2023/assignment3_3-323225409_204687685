@@ -93,18 +93,21 @@ const shared_data = {
   username: localStorage.username,
   lastSearch: sessionStorage.lastSearch,
   favorite_list: localStorage.favorite_list,
+  watched_list: localStorage.watched_list,
   // username: "Ayelet",
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
-    
+    this.watched_list = [];
     console.log("login", this.username);
   },
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
     localStorage.removeItem("lastSearch");
+    localStorage.removeItem("watched_list");
     this.username = undefined;
+    this.watched_list = undefined;
   },
   updateFavoriteList(favorite_list) {
     localStorage.setItem("favorite_list", favorite_list);

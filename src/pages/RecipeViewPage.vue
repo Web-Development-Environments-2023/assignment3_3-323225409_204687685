@@ -176,6 +176,7 @@ export default {
       else{
         instructions = null
       }
+      isWatched = true;
       // Check if the JSON data is defined before parsing
       // ingredients = ingredients ? JSON.parse(ingredients) : [];
       // instructions = instructions ? JSON.parse(instructions) : [];

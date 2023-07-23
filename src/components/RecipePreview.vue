@@ -184,14 +184,17 @@ export default {
           <span class="detail-text">{{ recipe.aggregateLikes }} Likes</span>
           
         </div>
-        <div v-if="recipe.isFavorite && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
-          <img src="../assets/star.png" alt="Favorite" class="detail-icon">
+        <div v-if="!recipe.if_recipe_exist_in_user_favorites && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
+            <b-icon-suit-heart @click.stop.prevent="() => addToFavorites(recipe.id)" aria-hidden="true" />
         </div>
-        <div v-if="!recipe.isFavorite && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
-          <button @click="addToFavorites(recipe.id)" class="heart-button">
-            <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
-          </button>
+        <div v-if="recipe.if_recipe_exist_in_user_favorites && $root.store.username && this.route_name !== '/users/MyRecipes' && this.route_name !== '/users/familyRecipes'" class="recipe-detail">
+          <b-icon-heart-fill aria-hidden="true"/>
         </div>
+
+        <!-- <div v-if="recipe.isFavorite">
+            <b-icon icon="heart-fill" aria-hidden="true"></b-icon>
+             <img src="../assets/addfavorite.png" alt="Add to Favorites" class="personal-icon">
+        </div> -->
       </div>
       <div class="recipe-info">
         <div v-if="recipe.glutenFree" class="info-item">
@@ -274,7 +277,6 @@ export default {
           }
          
         );
-        console.log(recipeId);
         this.updateWatchedList();
         this.recipe.isWatched = true;
       } catch (error) {
@@ -312,9 +314,10 @@ export default {
       const recipeId = this.recipe.id;
       const watchedList = this.$root.store.watchedList;
       this.isWatched = watchedList.some((recipe) => recipe.id === recipeId);
-      if (this.isWatched) {
-      this.isWatched = true; // Set it to true explicitly
-  }
+      console.log(this.isWatched);
+      // if (this.isWatched) {
+      // this.isWatched = true; // Set it to true explicitly
+  // }
     },
   },
 };

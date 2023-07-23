@@ -317,22 +317,27 @@ export default {
   border-radius: 10px;
   padding: 20px;
   background-color: #F8F8F8;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-family: cursive;
+  background-color:rgba(139, 82, 21, 0.088);
+  margin-top: 3%;
 }
 
 .title {
-  font-family: "Roboto", Arial, sans-serif;
   font-size: 36px;
-  color: #333333;
+  // color: #333333;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+  text-shadow:0 2px 6px rgba(0, 0, 0, 0.3);;
+  padding: 10px 10px;
+  color: rgb(174, 109, 45);
 }
 
 .btnReg {
   width: 100%;
   padding: 15px 20px;
-  background-color: #FF9800;
+  background-color: #df8a45;
   border: none;
   border-radius: 4px;
   font-weight: bold;
@@ -364,13 +369,13 @@ export default {
 }
 
 .btnReg:hover {
-  background-color: #FFD54F;
+  background-color: #ff9131;
 }
 
 .btnReset {
   width: 100%;
   padding: 15px 20px;
-  background-color: #4285F4;
+  background-color: #81c133;
   border: none;
   border-radius: 4px;
   font-weight: bold;
@@ -379,18 +384,18 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 50px;
+  
 }
 
 .btnReset:hover {
-  background-color: #3367D6;
+  background-color: #97e847;
 }
 
 .field {
   font-family: "Arial", sans-serif;
   font-size: 14px;
-  color: #666666;
+  color: #333333;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .b-form-group {
