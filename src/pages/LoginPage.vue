@@ -138,10 +138,10 @@ export default {
   max-width: 30vw;
   border-radius: 10px;
   padding: 20px;
-  background-color: #F8F8F8;
+  // background-color: #af0c0c;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   font-family: cursive;
-  background-color:rgba(139, 82, 21, 0.088);
+  background-color: #eee4db8a;
   margin-top: 3%;
 }
 .title {

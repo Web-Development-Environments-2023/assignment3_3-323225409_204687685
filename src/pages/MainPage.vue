@@ -61,16 +61,27 @@ export default {
 /* Common styles for the main container and content */
 .main-container {
   // max-width: 1200px;
-  max-width: 80%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   font-family: cursive;
+  // background-color: #fffaf68a;
+  
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  // background-color: aqua;
+
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 4vh;
+  text-align: center;
+  // background-color: #eee4db8a;
+  font-family: cursive;
+  // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Left side - Random Recipes */
@@ -159,7 +170,7 @@ export default {
   zoom: 60%;
   position: relative;
   // margin-bottom: 50vh;
-  margin-left: 15vw;
+  margin-left: 30vw;
 }
 
 /* Customize styles for the RecipePreviewList component */
