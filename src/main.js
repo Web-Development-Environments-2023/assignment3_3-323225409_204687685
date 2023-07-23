@@ -5,7 +5,9 @@ import axios from "axios";
 
 import routes from "./routes";
 import VueRouter from "vue-router";
+import VueCookies from "vue-cookies";
 Vue.use(VueRouter);
+Vue.use(VueCookies);
 const router = new VueRouter({
   routes,
 });
@@ -13,6 +15,18 @@ const router = new VueRouter({
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import VueScrollFixedNavbar from "vue-scroll-fixed-navbar";
+
+import { BFormRadio } from 'bootstrap-vue';
+Vue.component('b-form-radio', BFormRadio);
+import { BootstrapVue, IconsPlugin, ModalPlugin } from 'bootstrap-vue';
+
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(ModalPlugin);
+Vue.use(VueScrollFixedNavbar);
+
+
 import {
   FormGroupPlugin,
   FormPlugin,
@@ -24,6 +38,10 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  FormRadioPlugin,
+  FormCheckboxPlugin,
+  FormTextareaPlugin,
+  ListGroupPlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -36,9 +54,13 @@ import {
   AlertPlugin,
   ToastPlugin,
   LayoutPlugin,
+  FormRadioPlugin,
+  FormCheckboxPlugin,
+  FormTextareaPlugin,
+  ListGroupPlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
-
+axios.defaults.withCredentials=true;
 axios.interceptors.request.use(
   function(config) {
     // Do something before request is sent
@@ -67,19 +89,38 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
+  server_domain: "http://127.0.0.1:3000",
   username: localStorage.username,
+  lastSearch: sessionStorage.lastSearch,
+  favorite_list: localStorage.favorite_list,
+  watched_list: localStorage.watched_list,
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
+    this.watched_list = [];
     console.log("login", this.username);
   },
   logout() {
     console.log("logout");
     localStorage.removeItem("username");
+    localStorage.removeItem("lastSearch");
+    localStorage.removeItem("watched_list");
     this.username = undefined;
+    this.watched_list = undefined;
   },
+  updateFavoriteList(favorite_list) {
+    localStorage.setItem("favorite_list", favorite_list);
+    this.favorite_list = favorite_list;
+  },
+  updateStoredWatchedList(watched_list) {
+    localStorage.setItem("watched_list", watched_list);
+    this.watched_list = watched_list;
+  },
+  setLastSearch(searchDetails){
+    this.lastSearch = searchDetails;
+    sessionStorage.setItem("lastSearch", this.lastSearch);
+  }
 };
-console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
 
 new Vue({

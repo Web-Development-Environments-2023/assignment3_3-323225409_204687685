@@ -1,12 +1,16 @@
 <template>
   <div class="container">
+    <br/>
     <h1 class="title">Login</h1>
+    <br/>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-Username"
         label-cols-sm="3"
         label="Username:"
         label-for="Username"
+        class="field"
+
       >
         <b-form-input
           id="Username"
@@ -24,6 +28,7 @@
         label-cols-sm="3"
         label="Password:"
         label-for="Password"
+        class="field"
       >
         <b-form-input
           id="Password"
@@ -39,13 +44,12 @@
       <b-button
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
-        class="mx-auto w-100"
+        class="btnReg"
         >Login</b-button
       >
       <div class="mt-2">
-        Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        Do not have an account yet? <br>
+        <router-link id="links" to="register"> Register in here !</router-link>
       </div>
     </b-form>
     <b-alert
@@ -131,6 +135,94 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 400px;
+  max-width: 30vw;
+  border-radius: 10px;
+  padding: 20px;
+  // background-color: #af0c0c;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-family: cursive;
+  background-color: #eee4db8a;
+  margin-top: 3%;
 }
+.title {
+  // font-family: "Roboto", Arial, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 10px;
+  color: rgb(174, 109, 45);
+  font-weight: 700;
+}
+.field {
+  // font-family: "Comic Sans MS";
+  font-size: 16px;
+  color: #4a4a4a;
+  font-weight: bold;
+  margin-bottom: 3vh;
+  padding-right: 3vw;
+}
+
+.btnReg {
+  width: 70%;
+  padding: 11px 12px;
+  background-color: rgb(215, 141, 52);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-left: 6vw;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.btnReg:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: skewX(-30deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.btnReg:hover:before {
+  transform: skewX(0);
+  left: 100%;
+}
+
+.btnReg:hover {
+  background-color: #ff9633d2;
+}
+
+
+.mt-2{
+  font-size: 14px;
+  color: #2d2d2d;
+  font-weight: bold;
+  // margin-left: 8vw;
+  text-align: center;
+  
+}
+
+#links{
+  margin-left: 33px;
+  font-weight: bold;
+  color: #f08e25;
+  font-size: 15px;
+
+}
+
+#links:hover{
+  color: #ff6f00;
+
+}
+
 </style>
+
