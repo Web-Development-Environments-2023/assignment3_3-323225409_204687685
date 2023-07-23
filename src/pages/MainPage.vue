@@ -18,7 +18,7 @@
         <!-- if user is logged in -->
         <div v-if="$root.store.username">
           <h1 class="section-title">Last Watched Recipes</h1>
-          <RecipePreviewList ref="watched"  route_name="/users/lastseen" class="LastWatchedRecipes"/>
+          <RecipePreviewList ref="watched" route_name="/users/lastseen" class="LastWatchedRecipes"/>
         </div>
         <!-- if user is not logged in -->
         <div v-else>

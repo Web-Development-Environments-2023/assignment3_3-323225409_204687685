@@ -198,7 +198,6 @@ export default {
         customary
       };
       this.recipe = _recipe;
-      console.log(this.recipe);
     } catch (error) {
       console.log(error);
     }

@@ -249,9 +249,6 @@ export default {
       this.recipe.isFavorite = newValue;
     },
   },
-  mounted(){
-    console.log(this.recipe);
-  },
   methods: {
     async addToFavorites(recipeId){
       try {
@@ -277,7 +274,7 @@ export default {
           }
          
         );
-        console.log(response)
+        console.log(recipeId);
         this.updateWatchedList();
         this.recipe.isWatched = true;
       } catch (error) {
@@ -287,7 +284,7 @@ export default {
     async updateFavorites() {
       try {
         const response = await this.axios.get(
-          `${this.$root.store.serverDomain}/users/favorites`
+          `${this.$root.store.server_domain}/users/favorites`
         );
         const recipes = response.data;
         this.$root.store.updateFavoriteList([...recipes]);
@@ -303,7 +300,7 @@ export default {
     async updateWatchedList() {
       try {
         const response = await this.axios.get(
-          `${this.$root.store.serverDomain}/users/lastseen`
+          `${this.$root.store.server_domain}/users/lastseen`
         );
         const recipes = response.data;
         this.$root.store.updateWatchedList([...recipes]);
