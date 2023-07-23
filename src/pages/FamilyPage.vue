@@ -182,6 +182,10 @@
     width: 30vw;
     height: 30vw;
     object-fit: cover;
+    zoom: 60%;
+  /* background-color: #f8f8f8; */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
   
   .family-recipe h2 {

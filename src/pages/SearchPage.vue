@@ -418,7 +418,7 @@ export default {
 .search-container {
   background-color:rgba(139, 82, 21, 0.088);
   margin: auto;
-  margin-top: 5%;
+  margin-top: 2%;
   max-width: 750px;
   padding: 30px;
   color: rgb(0, 0, 0);
