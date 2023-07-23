@@ -35,14 +35,16 @@ export default {
     };
   },
   mounted() {
-    
     this.updateRecipes();
   },
   methods: {
     async updateRecipes() {
       try {
         const response = await this.axios.get(this.$root.store.server_domain + this.route_name);
-        this.recipes = response.data;
+        if (this.route_name == "/users/lastseen") 
+          this.recipes = response.data.slice(0, 3);
+        else
+          this.recipes = response.data;
       } catch (error) {
         console.log(error);
       }

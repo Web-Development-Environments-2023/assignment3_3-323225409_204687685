@@ -12,7 +12,7 @@ export default {
       RecipePreviewList,
   },
   mounted() {
-    this.$refs.myRecipes.updateMyRecipes();
+    // this.$refs.myRecipes.updateMyRecipes();
   },
 }
 </script>

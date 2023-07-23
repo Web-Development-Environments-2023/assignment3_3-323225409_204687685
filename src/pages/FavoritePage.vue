@@ -12,7 +12,7 @@ export default {
   },
   mounted() {
     console.log(this.$refs);
-    this.$refs.myRecipes.updateMyRecipes();
+    // this.$refs.myRecipes.updateMyRecipes();
   },
 }
 </script>

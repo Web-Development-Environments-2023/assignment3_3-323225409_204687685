@@ -94,7 +94,6 @@ const shared_data = {
   lastSearch: sessionStorage.lastSearch,
   favorite_list: localStorage.favorite_list,
   watched_list: localStorage.watched_list,
-  // username: "Ayelet",
   login(username) {
     localStorage.setItem("username", username);
     this.username = username;
@@ -113,7 +112,7 @@ const shared_data = {
     localStorage.setItem("favorite_list", favorite_list);
     this.favorite_list = favorite_list;
   },
-  updateWatchedList(watched_list) {
+  updateStoredWatchedList(watched_list) {
     localStorage.setItem("watched_list", watched_list);
     this.watched_list = watched_list;
   },
@@ -122,7 +121,6 @@ const shared_data = {
     sessionStorage.setItem("lastSearch", this.lastSearch);
   }
 };
-console.log(shared_data);
 // Vue.prototype.$root.store = shared_data;
 
 new Vue({

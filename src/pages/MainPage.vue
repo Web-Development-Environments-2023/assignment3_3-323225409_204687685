@@ -6,6 +6,7 @@
         <div class="content-container">
           <h1 class="section-title">Explore These Recipes</h1>
           <RecipePreviewList
+          title="Random Recipes"
           ref="random"
           route_name="/recipes/random3recipes"
           class="RandomRecipes"
@@ -48,10 +49,38 @@ export default {
       const recipeImage = event.target;
       recipeImage.style.transform = 'scale(1)'; // Reset the size on mouse leave
     },
+    async updateWatchedList() {
+      try {
+        const response = await this.axios.get(
+          `${this.$root.store.server_domain}/users/lastseen`
+        );
+        const recipes = response.data;
+        this.$root.store.updateStoredWatchedList([...recipes]);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async updateFavorites() {
+      try {
+        const response = await this.axios.get(
+          `${this.$root.store.server_domain}/users/favorites`
+        );
+        const recipes = response.data;
+        this.$root.store.updateFavoriteList([...recipes]);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-
+  created() {
+    if (this.$root.store.username) {
+      this.updateFavorites();
+      this.updateWatchedList();
+    }
+  },
   mounted() {
-    this.$refs.random.updateRecipes();
+    // this.$refs.random.updateRecipes();
+    
   },
 };
 
