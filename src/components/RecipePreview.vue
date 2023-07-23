@@ -1,8 +1,7 @@
 <template>
   <div class="recipe-card">
     <div class="recipe-card-image">
-      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id, route_name: this.route_name } }" class="recipe-preview" @click.native="checkifWatched()">
-        <img :src="recipe.image" alt="Recipe Image" class="recipe-image">
+      <router-link :to="{ name: 'recipe', params: { recipeId: recipe.id, route_name: this.route_name } }" class="recipe-preview" @click.native="addToWatched(recipe.id)">        <img :src="recipe.image" alt="Recipe Image" class="recipe-image">
       </router-link>
     </div>
     <div class="recipe-card-content">
@@ -105,6 +104,24 @@ export default {
         );
         const recipes = response.data;
         this.$root.store.updateFavoriteList([...recipes]);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async addToWatched(recipeId){
+      try {
+        
+        const response = await this.axios.post(
+          this.$root.store.server_domain + "/users/lastseen",
+          {
+            recipe_id: recipeId
+          }
+         
+        );
+        console.log(response)
+        this.updateWatchedList();
+        this.recipe.isWatched = true;
       } catch (error) {
         console.log(error);
       }
