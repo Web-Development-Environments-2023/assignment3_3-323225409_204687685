@@ -21,7 +21,7 @@
           <RecipePreviewList ref="watched" route_name="/users/lastseen" class="LastWatchedRecipes"/>
         </div>
         <!-- if user is not logged in -->
-        <div v-else>
+        <div id="loginDiv" v-else>
           
           <LoginPage class="login"></LoginPage>
         </div>
@@ -166,11 +166,21 @@ export default {
   align-items: center;
   // margin-bottom: 1320px;
 }
+
+#loginDiv{
+  position: fixed;
+  margin-bottom: 100%;
+  margin-top: 0%;
+  zoom: 80%;
+  margin-right: 15vw;
+
+}
 .login{
-  zoom: 60%;
   position: relative;
   // margin-bottom: 50vh;
-  margin-left: 30vw;
+  margin-left: 20vw;
+  // margin-bottom: 150vh;
+  // position: fixed;
 }
 
 /* Customize styles for the RecipePreviewList component */
