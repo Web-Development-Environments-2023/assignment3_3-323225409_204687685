@@ -135,36 +135,42 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 400px;
-  font-family: "Comic Sans MS";
-  // box-shadow: 0 4px 8px rgba(199, 29, 29, 0.2);
+  max-width: 40vw;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #F8F8F8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  font-family: cursive;
+  background-color:rgba(139, 82, 21, 0.088);
+  margin-top: 3%;
 }
 .title {
   // font-family: "Roboto", Arial, sans-serif;
   font-size: 36px;
-  color: rgb(215, 141, 52);
   font-weight: bold;
   text-align: center;
-  margin-bottom: 5px;
-  margin-left: 80px;
+  padding: 10px 10px;
+  color: rgb(174, 109, 45);
+  font-weight: 700;
 }
 .field {
   // font-family: "Comic Sans MS";
   font-size: 16px;
   color: #4a4a4a;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 3vh;
+  padding-right: 3vw;
 }
 
 .btnReg {
-  width: 75%;
+  width: 70%;
   padding: 11px 12px;
   background-color: rgb(215, 141, 52);
   border: none;
   border-radius: 4px;
   font-weight: bold;
   color: #FFFFFF;
-  margin-left: 95px;
+  margin-left: 8.5vw;
   margin-bottom: 20px;
   text-transform: uppercase;
   cursor: pointer;
@@ -192,28 +198,29 @@ export default {
 }
 
 .btnReg:hover {
-  background-color: #e5a95bd2;
+  background-color: #ff9633d2;
 }
 
 
 .mt-2{
   font-size: 14px;
-  color: #4a4a4a;
+  color: #2d2d2d;
   font-weight: bold;
-  margin-left: 140px;
+  // margin-left: 8vw;
+  text-align: center;
   
 }
 
 #links{
   margin-left: 33px;
   font-weight: bold;
-  color: #ff8400;
+  color: #f08e25;
   font-size: 15px;
 
 }
 
 #links:hover{
-  color: #579c3b;
+  color: #ff6f00;
 
 }
 
