@@ -177,13 +177,13 @@ a:hover {
 
 <style>
 .container {
-  max-width: 80%;
+  max-width: 70%;
   margin: 0 auto;
   padding: 4vh;
   text-align: center;
   background-color: #eee4db8a;
   font-family: cursive;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 
 }
 
