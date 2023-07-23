@@ -422,7 +422,7 @@ export default {
   max-width: 750px;
   padding: 30px;
   color: rgb(0, 0, 0);
-  font-family: 'KG First Time In Forever', sans-serif;
+  font-family: cursive;
   font-weight: 900;
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

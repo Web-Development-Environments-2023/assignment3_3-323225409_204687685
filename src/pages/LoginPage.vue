@@ -135,7 +135,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  max-width: 40vw;
+  max-width: 30vw;
   border-radius: 10px;
   padding: 20px;
   background-color: #F8F8F8;
@@ -170,7 +170,7 @@ export default {
   border-radius: 4px;
   font-weight: bold;
   color: #FFFFFF;
-  margin-left: 8.5vw;
+  margin-left: 6vw;
   margin-bottom: 20px;
   text-transform: uppercase;
   cursor: pointer;

@@ -60,9 +60,11 @@ export default {
 <style lang="scss" scoped>
 /* Common styles for the main container and content */
 .main-container {
-  max-width: 1200px;
+  // max-width: 1200px;
+  max-width: 80%;
   margin: 0 auto;
   padding: 20px;
+  font-family: cursive;
 }
 
 .content-container {
@@ -80,9 +82,15 @@ export default {
 }
 
 .section-title {
-  font-size: 24px;
+  // font-size: 24px;
+  // font-weight: bold;
+  // margin-bottom: 20px;
+  font-size: 30px;
   font-weight: bold;
-  margin-bottom: 20px;
+  text-align: center;
+  padding: 10px 10px;
+  color: rgb(174, 109, 45);
+  font-weight: 700;
 }
 
 .refresh-button {
@@ -111,7 +119,7 @@ export default {
 }
 
 .refresh-button:before {
-  background-color: rgb(223, 147, 53);
+  background-color: rgb(236, 149, 43);
   content: "";
   height: calc(100% + 3px);
   position: absolute;
@@ -124,7 +132,7 @@ export default {
 
 .refresh-button:hover:before,
 .refresh-button:active:before {
-  background-color: #f6c06a; /* Apply the same background-color on hover and active */
+  background-color: #ffa856; /* Apply the same background-color on hover and active */
 }
 .RecipePreviewList {
   display: flex;
@@ -148,9 +156,10 @@ export default {
   // margin-bottom: 1320px;
 }
 .login{
+  zoom: 60%;
   position: relative;
-  margin-bottom: 1000px;
-  margin-left: 150px;
+  // margin-bottom: 50vh;
+  margin-left: 15vw;
 }
 
 /* Customize styles for the RecipePreviewList component */
