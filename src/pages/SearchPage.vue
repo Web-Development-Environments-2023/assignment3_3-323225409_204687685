@@ -260,7 +260,6 @@ export default {
 
     <b-alert class="mt-2" v-if="form.submitError" variant="warning" dismissible show>Search failed: {{ form.submitError }}</b-alert>
 
-  <!-- <div v-if="$root.store.username && !LastSearchcalled" :do="LastSearch()"></div> -->
   <div v-if="$root.store.username && search_results"></div>
     <div v-if="search_results">
       <h5 id="no-results" v-if="noResults">We couldn't find recipes that match your search</h5>
@@ -287,7 +286,6 @@ import { required } from "vuelidate/lib/validators";
 import cuisines from "../assets/cuisines";
 import dietOptions from "../assets/diet";
 import intolerances from "../assets/intolerances";
-import RecipePreviewList from "../components/RecipePreviewList";
 import RecipePreview from "../components/RecipePreview";
 
 
@@ -375,7 +373,7 @@ export default {
         }
     } catch (err) {
       console.log(err);
-      // this.form.submitError = err.response.data.message;
+      
     }
     },
     onSearch() {
@@ -387,14 +385,14 @@ export default {
       this.Search();
     },
     onReset() {
-      console.log("On reset method called");
-      this.form.search = ""; // Reset the search field to an empty string
-      this.form.number = "5"; // Reset the number field to its default value
-      this.form.cuisine = null; // Reset the cuisine field to null
-      this.form.diet = null; // Reset the diet field to null
-      this.form.intolerance = null; // Reset the intolerance field to null
-      this.noResults = false; // Reset the noResults flag to false
-      this.$v.$reset(); // Reset the vuelidate form validation
+      
+      this.form.search = ""; 
+      this.form.number = "5"; 
+      this.form.cuisine = null; 
+      this.form.diet = null; 
+      this.form.intolerance = null; 
+      this.noResults = false; 
+      this.$v.$reset(); 
     },
     sortByPrepTime() {
         this.search_results.sort(function(a, b) {
@@ -403,7 +401,7 @@ export default {
     },
     sortByPopularity() {
         this.search_results.sort(function(a, b) {
-          return b.popularity - a.popularity;
+          return b.aggregateLikes - a.aggregateLikes;
         })
     },
   },

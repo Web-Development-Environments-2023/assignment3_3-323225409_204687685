@@ -303,7 +303,7 @@ export default {
     async updateWatchedList() {
       try {
         const response = await this.axios.get(
-          `${this.$root.store.serverDomain}/users/lastseen`
+          `${this.$root.store.server_domain}/users/lastseen`
         );
         const recipes = response.data;
         this.$root.store.updateWatchedList([...recipes]);
