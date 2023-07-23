@@ -19,9 +19,20 @@ export default {
   
 <style>
 .myrecipes-container {
-  display: flex;  
+  /* display: flex;  
   align-items: center;
   justify-content: center;
-  padding-bottom: 30px;
+  padding-bottom: 30px; */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 4vh;
+  /* text-align: center; */
+  background-color: #eee4db8a;
+  font-family: cursive;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 </style>
