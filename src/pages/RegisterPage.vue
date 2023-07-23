@@ -170,8 +170,8 @@
       <b-button  class = "btnReset" type="reset" variant="danger">Reset</b-button>
       
       <div class="mt-2">
-        You have an account already?
-        <router-link to="login"> Log in here</router-link>
+        Do you have an account already?
+        <router-link id="links" to="login"> Log in here</router-link>
       </div>
     </b-form>
     <b-alert
@@ -385,6 +385,15 @@ export default {
   transition: background-color 0.3s ease;
   border-radius: 50px;
   
+}
+
+#links{
+  color: #ea730a;
+}
+
+#links:hover{
+  color: #ffa75a;
+
 }
 
 .btnReset:hover {
